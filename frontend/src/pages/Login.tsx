@@ -20,7 +20,7 @@ const Login = () => {
   const dispatch: ThunkDispatch<any, any, AnyAction> = useDispatch();
 
   const { user, isLoading, isError, isSuccess, message } = useSelector(
-    (state: any) => state.auth,
+    (state: any) => state.auth
   );
 
   useEffect(() => {
@@ -79,10 +79,11 @@ const Login = () => {
       <section className="form">
         <form onSubmit={onSubmit}>
           <div className="form-group">
-          <label htmlFor="name">Email</label>
+            <label htmlFor="email">Email</label>
             <input
               type="email"
               className="form-control"
+              autoComplete="username"
               id="email"
               name="email"
               value={email}
@@ -91,10 +92,11 @@ const Login = () => {
             />
           </div>
           <div className="form-group">
-          <label htmlFor="name">Password</label>
+            <label htmlFor="password">Password</label>
             <input
               type="password"
               className="form-control"
+              autoComplete="current-password"
               id="password"
               name="password"
               value={password}

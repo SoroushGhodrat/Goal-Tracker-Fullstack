@@ -84,6 +84,7 @@ const Register = () => {
             <input
               type="text"
               className="form-control"
+              autoComplete="username"
               id="name"
               name="name"
               value={name}
@@ -93,10 +94,11 @@ const Register = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="name">Email</label>
+            <label htmlFor="email">Email</label>
             <input
               type="email"
               className="form-control"
+              autoComplete="username"
               id="email"
               name="email"
               value={email}
@@ -106,10 +108,11 @@ const Register = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="name">Password</label>
+            <label htmlFor="password">Password</label>
             <input
               type="password"
               className="form-control"
+              autoComplete="current-password"
               id="password"
               name="password"
               value={password}
@@ -119,10 +122,11 @@ const Register = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="name">Confirm Password</label>
+            <label htmlFor="confirm_password">Confirm Password</label>
             <input
               type="password"
               className="form-control"
+              autoComplete="new-password"
               id="confirm_password"
               name="confirm_password"
               value={confirm_password}
@@ -130,7 +134,7 @@ const Register = () => {
               onChange={onChange}
             />
           </div>
-          
+
           <div className="form-group">
             <button type="submit" className="btn btn-block">
               Submit
