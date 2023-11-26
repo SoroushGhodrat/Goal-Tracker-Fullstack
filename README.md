@@ -1,54 +1,76 @@
+## 📚 Table of Contents
+
+---
+
+1. [ Project Setup and Execution](#project-setup-and-execution)
+   - [ Installation](#installation)
+   - [ Running the Frontend](#running-the-frontend)
+   - [ Running the Backend](#running-the-backend)
+   - [ Restart Server](#restart-server)
+   - [ Token-Based Authentication](#token-based-authentication)
+   - [ API Documentation using Swagger](#api-documentation-using-swagger)
+2. [ Security](#essential-libraries-for-security)
+3. [ Technologies Used](#technologies-used)
+
 ## Project Setup and Execution
+
+---
 
 ### Installation
 
-- Execute `npm install` to install all necessary dependencies for both the backend and frontend of the project.
-
+Execute `npm install` to install all necessary dependencies for both the backend and frontend of the project.
 
 ### Running the Frontend
 
-- Initiate the frontend by executing `npm start` in the first terminal.
+Initiate the frontend by executing `npm start` in the first terminal.
 
 ### Running the Backend
 
-- Start the backend server by executing `npm run server` in a separate terminal.
-- Upon successful startup, the following message will be displayed in the terminal:
-   ```sh
-      Server Status:
-   🔌 Connected To MongoDB
-   🎧 Server is running on http://localhost:5000
-   📄 API documents: http://localhost:5000/api-docs/
-   ```
+Start the backend server by executing `npm run server` in a separate terminal. Upon successful startup, the following message will be displayed in the terminal:
 
-### Restart Server in case of any error:
+```sh
+Server Status:
+🔌 Connected To MongoDB
+🎧 Server is running on http://localhost:5000
+📄 API documents: http://localhost:5000/api-docs/
+```
 
-   - In case of any errors, the server can be restarted by typing `rs` in the terminal and pressing Enter.
+### Restart Server
 
+Should you encounter any errors, you can easily restart the server. Simply type `rs` into the terminal and hit the `Enter` key. This command will trigger a server reboot, potentially resolving any temporary issues.
 
-###  Backend Authentication:
-   - This project utilizes token-based authentication (via the protect middleware) for certain routes. To test these APIs through Postman, ensure to add the token to the "Bearer Token" field under the "Auth" tab when testing protected routes.
+### Token-Based Authentication
 
-   ### API Documentation with Swagger
+---
 
-   This project uses [Swagger](https://swagger.io/) for documenting RESTful APIs to help developers to understand and interact with the API.
+This project utilizes token-based authentication (via the protect middleware) for certain routes. To test these APIs through Postman, ensure to add the token to the "Bearer Token" field under the "Auth" tab when testing protected routes.
 
-   To view the API documentation:
+### API Documentation Using Swagger
 
-   - Start the backend server by executing `npm run server` in a separate terminal.
-   - Open a web browser and navigate to `http://localhost:5000/api-docs/`.
+---
 
-   The Swagger UI will be displayed, showing a list of all available API endpoints. You can expand each endpoint to see its details, including the expected request format and the response format. You can also try out the endpoints directly from the Swagger UI.
+This project utilizes Swagger for the documentation of its RESTful APIs. To access the API documentation, ensure the backend server is running and visit http://localhost:5000/api-docs/ on your web browser.
 
-   #### Important!
-   For endpoints that require authentication, you'll need to provide a Bearer token. Click on the "Authorize" button at the top of the Swagger UI, enter the Bearer token in the input field, and click "Authorize" to close the dialog. Your Bearer token will be included in the `Authorization` header of all subsequent requests made from the Swagger UI.
+**❗Important Note:** Some endpoints require authentication and will need a **_Bearer token_**. To provide this, click the "Authorize" button at the top of the Swagger UI, input the Bearer token in the provided field, and click "Authorize" again to close the dialog. This will include your Bearer token in the Authorization header for all subsequent requests made from the Swagger UI.
 
-You can locate and copy the Bearer token from the console. It will appear in the format: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...`
+The Bearer token is displayed in the console in the format:
+`Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9....`. Ensure to copy the entire string, including the `Bearer` prefix, but excluding the quotation marks ("").
 
-Please ensure to copy the entire string, including the `Bearer` prefix, but without the quotation marks ("").
+To test the endpoint with Postman, only the token part of the string is needed, i.e., the part following `Bearer`, which appears like `eyJhbGciOiJIU...`.
 
-If you wish to test the endpoint with Postman, you only need to copy and paste the token part of the string, i.e., the part after `Bearer `, which looks like `eyJhbGciOiJIU...`.
+## Essential Libraries for Security
 
-###  Security Section
+---
 
-- [bcrypt.js](https://www.npmjs.com/package/bcryptjs): A library for hashing and salting passwords.
-- [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken): A library for generating JSON Web Tokens (JWT) for user authentication.
+- **Bcrypt**: This is a robust library used for hashing and salting passwords, providing a secure way to store user passwords.
+- **JSON Web Token**: This library is essential for generating JSON Web Tokens (JWT). JWTs are used for user authentication, ensuring secure transmission of information.
+
+### Technologies Used
+
+---
+
+- **Node.js**: A JavaScript runtime built on Chrome's V8 JavaScript engine.
+- **Express.js**: A minimal and flexible Node.js web application framework.
+- **React.js**: A JavaScript library for building UI.
+- **TypeScript**: To add static type definitions.
+- **MongoDB**: A source-available cross-platform document-oriented database program.
