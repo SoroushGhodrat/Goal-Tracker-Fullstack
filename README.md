@@ -58,7 +58,7 @@ The Bearer token is displayed in the console in the format:
 
 To test the endpoint with Postman, only the token part of the string is needed, i.e., the part following `Bearer`, which appears like `eyJhbGciOiJIU...`.
 
-## Essential Libraries for Security
+### Essential Libraries for Security
 
 ---
 
