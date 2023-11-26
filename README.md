@@ -1,6 +1,6 @@
 ## 📚 Table of Contents
 
----
+
 
 1. [ Project Setup and Execution](#project-setup-and-execution)
    - [ Installation](#installation)
@@ -14,7 +14,7 @@
 
 ## Project Setup and Execution
 
----
+
 
 ### Installation
 
