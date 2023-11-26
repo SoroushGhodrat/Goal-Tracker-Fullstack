@@ -39,6 +39,7 @@
 
    The Swagger UI will be displayed, showing a list of all available API endpoints. You can expand each endpoint to see its details, including the expected request format and the response format. You can also try out the endpoints directly from the Swagger UI.
 
+   #### Important!
    For endpoints that require authentication, you'll need to provide a Bearer token. Click on the "Authorize" button at the top of the Swagger UI, enter the Bearer token in the input field, and click "Authorize" to close the dialog. Your Bearer token will be included in the `Authorization` header of all subsequent requests made from the Swagger UI.
 
 You can locate and copy the Bearer token from the console. It will appear in the format: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...`
