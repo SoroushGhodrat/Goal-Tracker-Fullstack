@@ -1,0 +1,106 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Goal Management API",
+    "version": "1.0.0",
+    "description": "API for managing Goals",
+    "license": {
+      "name": "Licence: MIT",
+      "url": "https://spdx.org/licenses/MIT.html"
+    }
+  },
+  "host": "localhost:5000",
+  "basePath": "/api",
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header",
+      "description": "Enter JWT Bearer token"
+    }
+  },
+  "paths": {
+    "/goals": {
+      "get": {
+        "summary": "Get all goals",
+        "description": "Fetch all goals for the authenticated user",
+        "responses": {
+          "200": {
+            "description": "A list of goals",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Goal"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/users": {
+      "get": {
+        "summary": "Get all users",
+        "description": "Fetch all users from the system",
+        "responses": {
+          "200": {
+            "description": "A list of users",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Goal": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string",
+          "description": "The text of the goal"
+        },
+        "user": {
+          "type": "string",
+          "description": "The ID of the user who owns the goal"
+        }
+      }
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "type": "string",
+          "description": "The MongoDB ID of the user"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the user"
+        },
+        "email": {
+          "type": "string",
+          "description": "The email of the user"
+        },
+        "__v": {
+          "type": "integer",
+          "description": "The version key used by MongoDB"
+        },
+        "id": {
+          "type": "string",
+          "description": "The ID of the user"
+        }
+      }
+    }
+  }
+}
