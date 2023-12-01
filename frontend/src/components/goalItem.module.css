@@ -1,0 +1,98 @@
+.goal {
+  background-color: #f4f4f4;
+  border-radius: 6px;
+  margin: 10px 0;
+  padding: 20px;
+  position: relative;
+}
+
+.goal_action_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.edit_icon {
+  padding-right: 10px;
+}
+
+.delete_icon,
+.edit_icon {
+  color: #3a73a9;
+}
+
+.edit_icon:hover {
+  cursor: pointer;
+  color: #a0daa9;
+}
+.delete_icon:hover {
+  cursor: pointer;
+  color: crimson;
+}
+
+.goal .close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.info {
+  cursor: help;
+  display: flex;
+
+  flex-direction: row;
+  align-items: center;
+}
+
+.info > div {
+  margin-left: 10px;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out 0.2s;
+  color: #3a73a9;
+}
+
+.info:hover > div {
+  display: block;
+  opacity: 1;
+}
+
+.goal_actions {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+}
+
+.description {
+  padding: 10px 0 0 30px;
+}
+
+.duration {
+  display: flex;
+  flex-direction: row;
+
+  margin-top: 30px;
+  padding-left: 30px;
+  gap: 5%;
+}
+
+.duration p {
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  border-radius: 5px;
+}
+
+.duration p:nth-child(1) {
+  background-color: #a0daa9;
+}
+
+.duration p:nth-child(2) {
+  background-color: #e5a59e;
+}
+
+.duration p:nth-child(3) {
+  background-color: rgb(152, 206, 242);
+}

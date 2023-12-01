@@ -39,8 +39,7 @@ h3 {
   width: 100%;
   max-width: 960px;
   margin: 0 auto;
-  padding: 0 20px;
-  text-align: center;
+  padding: 0 20px 100px 20px;
 }
 
 .header {
@@ -86,13 +85,13 @@ h3 {
   color: #828282;
 }
 
-.goals {
+/* .goals {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
-}
+} */
 
-.goal {
+/* .goal {
   background-color: #f4f4f4;
   margin: 10px 0;
   padding: 20px 0 10px;
@@ -106,13 +105,18 @@ h3 {
   cursor: pointer;
   border: none;
   background: none;
-}
+} */
 
 .form,
 .content {
   width: 70%;
   margin: 0 auto;
 }
+/* .form,
+.content {
+  width: 70%;
+  margin: 0 auto;
+} */
 
 .form-group {
   margin-bottom: 10px;
