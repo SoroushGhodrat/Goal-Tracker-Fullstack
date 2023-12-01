@@ -28,7 +28,7 @@ export const register = createAsyncThunk(
         error.toString();
       return thunkAPI.rejectWithValue({ message });
     }
-  }
+  },
 );
 
 // Login user
@@ -46,7 +46,7 @@ export const login = createAsyncThunk(
         error.toString();
       return thunkAPI.rejectWithValue(message);
     }
-  }
+  },
 );
 
 // Logout user

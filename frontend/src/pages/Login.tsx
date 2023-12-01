@@ -20,7 +20,7 @@ const Login = () => {
   const dispatch: ThunkDispatch<any, any, AnyAction> = useDispatch();
 
   const { user, isLoading, isError, isSuccess, message } = useSelector(
-    (state: any) => state.auth
+    (state: any) => state.auth,
   );
 
   useEffect(() => {
