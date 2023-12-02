@@ -12,6 +12,16 @@ const goalSchema = new Schema(
       type: String,
       require: [true, "Please add a text value"],
     },
+    selectedDates: {
+      startDate: {
+        type: Date,
+        require: [true, "Please add a start date"],
+      },
+      endDate: {
+        type: Date,
+        require: [true, "Please add an end date"],
+      },
+    },
   },
   {
     timestamps: true,

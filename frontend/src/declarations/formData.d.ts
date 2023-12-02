@@ -26,9 +26,17 @@ export type initialAuthState = {
   message: string | unknown;
 };
 
+export type InputDate = Date;
+
+export type SelectedDates = {
+  startDate: InputDate;
+  endDate: InputDate;
+};
+
 export type Goal = {
   _id?: string;
   text?: string;
+  selectedDates?: SelectedDates;
   createdAt?: string;
 };
 

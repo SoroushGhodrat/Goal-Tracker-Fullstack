@@ -6,14 +6,21 @@ import styles from "./goalItem.module.css";
 import { LuBadgeInfo, LuTrash2, LuPencilLine } from "react-icons/lu";
 import "react-quill/dist/quill.snow.css";
 import Tooltip from "./UI/Tooltip/Tooltip";
+import { dateStandardizer, goalDuration } from "../utils/dateStandardizer";
 interface GoalItemProps {
   goal: Goal;
 }
 
+type InputDate = {
+  startDate: Date;
+  endDate: Date;
+};
+
 const GoalItem = ({ goal }: GoalItemProps) => {
   const dispatch: AppDispatch = useDispatch();
 
-  const { createdAt, _id, text } = goal;
+  const { createdAt, _id, text, selectedDates } = goal;
+  const { startDate, endDate } = selectedDates as InputDate;
 
   const handleEditGoal = () => {
     alert("Not implemented yet");
@@ -72,9 +79,9 @@ const GoalItem = ({ goal }: GoalItemProps) => {
       />
 
       <section className={styles.duration}>
-        <p>Start at: 10/16/2023</p>
-        <p>Due date: 10/16/2023</p>
-        <p>Remain dayy(s): 10 day</p>
+        <p>Start at: {dateStandardizer(startDate)}</p>
+        <p>Due date: {dateStandardizer(endDate)}</p>
+        <p>Remain day(s) {goalDuration(startDate, endDate)}</p>
       </section>
     </div>
   );

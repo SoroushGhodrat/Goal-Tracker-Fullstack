@@ -51,7 +51,7 @@ const GoalForm = () => {
   // Custom hook for form validation hook
   const { errors, setErrors, validateForm } = useFormValidation(
     text,
-    selectedDates
+    selectedDates,
   );
 
   let startDateFooter = <p>Please select a start date.</p>;
@@ -92,11 +92,11 @@ const GoalForm = () => {
     e.preventDefault();
 
     if (!validateForm()) {
-      console.log("Form validation failed: ", errors);
+      // console.log("Form validation failed: ", errors);
       return;
     } else {
-      console.log("Form validation passed!");
-      dispatch(createGoal({ text }));
+      // console.log("Form validation passed!");
+      dispatch(createGoal({ text, selectedDates }));
       handleResetForm();
     }
   };
