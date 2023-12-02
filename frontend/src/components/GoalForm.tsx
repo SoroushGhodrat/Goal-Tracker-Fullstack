@@ -1,48 +1,60 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { createGoal } from "../features/goals/goalSlice";
 import { AppDispatch } from "../app/store";
-import { format } from "date-fns";
+import { format, set } from "date-fns";
 import styles from "./goalForm.module.css";
 import TextEditor from "./TextEditor/TextEditor";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
+import useFormValidation from "../hooks/useFormValidation";
+import Error from "./UI/Error/Error";
 
-type CalendarDate = Date | undefined;
-interface calendar {
-  startDate: CalendarDate;
-  endDate: CalendarDate;
-}
-
-const initialCalendarDate: calendar = {
+const initialCalendarState: SelectedDates = {
   startDate: undefined,
   endDate: undefined,
 };
 
-const GoalForm = () => {
-  const [text, setText] = useState("");
+interface Error {
+  textError: string | undefined;
+  startDateError: string | undefined;
+  endDateError: string | undefined;
+  isErrored?: boolean;
+}
 
+const initialErrorsState: Error = {
+  textError: undefined,
+  startDateError: undefined,
+  endDateError: undefined,
+};
+
+type InputDate = Date | undefined;
+
+interface SelectedDates {
+  startDate: InputDate;
+  endDate: InputDate;
+}
+
+const GoalForm = () => {
   const dispatch: AppDispatch = useDispatch();
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    dispatch(createGoal({ text }));
-
-    setText("");
-  };
-
+  const [text, setText] = useState<string>("");
   const [selectedDates, setSelectedDates] =
-    useState<calendar>(initialCalendarDate);
-
+    useState<SelectedDates>(initialCalendarState);
   const [isCalendarVisible, setIsCalendarVisible] = useState(true);
 
   const toggleCalendar = () => {
     setIsCalendarVisible(!isCalendarVisible);
   };
 
-  let startDateFooter = <p>Peak a start date!</p>;
+  // Custom hook for form validation hook
+  const { errors, setErrors, validateForm } = useFormValidation(
+    text,
+    selectedDates
+  );
+
+  let startDateFooter = <p>Please select a start date.</p>;
   if (selectedDates.startDate) {
     startDateFooter = (
       <p className={styles.start_date}>
@@ -51,7 +63,7 @@ const GoalForm = () => {
     );
   }
 
-  let endDateFooter = <p>Peak a due date!</p>;
+  let endDateFooter = <p>Please select an end date.</p>;
   if (selectedDates.endDate) {
     endDateFooter = (
       <p className={styles.end_date}>
@@ -60,21 +72,39 @@ const GoalForm = () => {
     );
   }
 
-  const handleStartDateSelect = (date: CalendarDate) => {
+  const handleTextChange = (value: string) => {
+    setText(value);
+  };
+
+  const handleStartDateSelect = (date: InputDate) => {
     if (date) {
       setSelectedDates({ ...selectedDates, startDate: date });
     }
   };
 
-  const handleEndDateSelect = (date: CalendarDate) => {
+  const handleEndDateSelect = (date: InputDate) => {
     if (date) {
       setSelectedDates({ ...selectedDates, endDate: date });
     }
   };
 
-  const handleWipeForm = () => {
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!validateForm()) {
+      console.log("Form validation failed: ", errors);
+      return;
+    } else {
+      console.log("Form validation passed!");
+      dispatch(createGoal({ text }));
+      handleResetForm();
+    }
+  };
+
+  const handleResetForm = () => {
     setText("");
-    setSelectedDates(initialCalendarDate);
+    setSelectedDates(initialCalendarState);
+    setErrors(initialErrorsState);
   };
 
   return (
@@ -82,8 +112,9 @@ const GoalForm = () => {
       <form onSubmit={onSubmit}>
         <div className="form-group">
           <label htmlFor="text">Description</label>
-          <TextEditor value={text} onChange={setText} />
+          <TextEditor value={text} onChange={handleTextChange} />
         </div>
+        {errors.textError && <Error error={errors.textError} />}
 
         <div className={styles.calendar_container}>
           <div className={styles.calendar_title} onClick={toggleCalendar}>
@@ -112,14 +143,16 @@ const GoalForm = () => {
             </div>
           )}
         </div>
+        {errors.startDateError && <Error error={errors.startDateError} />}
+        {errors.endDateError && <Error error={errors.endDateError} />}
 
         <div className={styles.button_group}>
           <button
             className={styles.btn_custom}
             type="reset"
-            onClick={handleWipeForm}
+            onClick={handleResetForm}
           >
-            Wipe Form
+            Reset
           </button>
 
           <button className={styles.btn_custom} type="submit">
