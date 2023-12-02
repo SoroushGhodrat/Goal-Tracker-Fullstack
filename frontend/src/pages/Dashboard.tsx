@@ -42,12 +42,8 @@ function Dashboard() {
     <>
       <section className="heading">
         <h1>Welcom {user && user.name}</h1>
-        <p>Goals Dashboard</p>
+        <p>Make your goal!</p>
       </section>
-      <pre>
-        TODO: Update the API to edit the goal, start, and end date. Add edit
-        functionality.
-      </pre>
       <br />
       <GoalForm />
       <section className="content">
