@@ -1,15 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { createGoal } from "../features/goals/goalSlice";
-import { AppDispatch } from "../app/store";
+import { createGoal } from "../../features/goals/goalSlice";
+import { AppDispatch } from "../../app/store";
 import { format, set } from "date-fns";
 import styles from "./goalForm.module.css";
-import TextEditor from "./TextEditor/TextEditor";
+import TextEditor from "../TextEditor/TextEditor";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
-import useFormValidation from "../hooks/useFormValidation";
-import Error from "./UI/Error/Error";
+import useFormValidation from "../../hooks/useFormValidation";
+import Error from "../UI/Error/Error";
 
 const initialCalendarState: SelectedDates = {
   startDate: undefined,
