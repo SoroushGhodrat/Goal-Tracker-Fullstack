@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { FormDataRegister, User } from "../declarations/formData";
 import { FaUser } from "react-icons/fa";
 import { register, reset } from "../features/auth/authSlice";
-import Spinner from "../components/Spiner";
+import Spinner from "../components/UI/Spiner/Spiner";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 
 const Register = () => {
@@ -31,7 +31,7 @@ const Register = () => {
     }
 
     if (isSuccess || user || user !== null) {
-      navigate("/");
+      navigate("/goalList");
     }
 
     dispatch(reset());

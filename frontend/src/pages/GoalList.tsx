@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import GoalForm from "../components/GoalForm";
-import Spinner from "../components/Spiner";
+import GoalFrom from "../components/GoalForm/GoalForm";
+import Spinner from "../components/UI/Spiner/Spiner";
 import { getGoals, reset } from "../features/goals/goalSlice";
 import GoalItem from "../components/GoalItem";
 import { Goal } from "../declarations/formData";
 import { AppDispatch } from "../app/store";
-
-function Dashboard() {
+import goalImage from "../assets/goal.png";
+function NewGoalForm() {
   const navigate = useNavigate();
   const dispatch: AppDispatch = useDispatch();
 
@@ -41,11 +41,12 @@ function Dashboard() {
   return (
     <>
       <section className="heading">
-        <h1>Welcom {user && user.name}</h1>
-        <p>Make your goal!</p>
+        <h1>Goals List</h1>
+        {/* <div >
+          <img src={goalImage} alt="Goal" />
+        </div> */}
       </section>
-      <br />
-      <GoalForm />
+
       <section className="content">
         {goals.length > 0 ? (
           <div className="goals">
@@ -61,4 +62,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default NewGoalForm;

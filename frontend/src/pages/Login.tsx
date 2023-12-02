@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { login, reset } from "../features/auth/authSlice";
-import Spinner from "../components/Spiner";
+import Spinner from "../components/UI/Spiner/Spiner";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 
 const Login = () => {
@@ -29,7 +29,7 @@ const Login = () => {
     }
 
     if (isSuccess || user) {
-      navigate("/");
+      navigate("/goalList");
     }
 
     dispatch(reset());
@@ -70,7 +70,7 @@ const Login = () => {
         <p>Login and start setting goals</p>
       </section>
 
-      <section style={{ paddingLeft: "20px" }}>
+      <section style={{ paddingLeft: "20px", textAlign: "center" }}>
         <p>Email: guest@email.com</p>
         <p>Password: password</p>
         <br />
