@@ -43,6 +43,7 @@ const setGoal = async (
 
   const goal = await Goal.create({
     text: req.body.text,
+    selectedDates: req.body.selectedDates,
     user: req.user.id,
   });
 
