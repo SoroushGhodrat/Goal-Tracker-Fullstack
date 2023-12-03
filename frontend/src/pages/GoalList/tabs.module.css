@@ -1,0 +1,103 @@
+body {
+  /* font-family: "Roboto", Arial, Helvetica, sans-serif;
+      letter-spacing: 0.01em;
+      line-height: 1.6em;
+      font-weight: 300; */
+
+  /* background: #191828;
+    color: #efedef;
+    font-size: 16px;
+    margin: 0;
+    padding: 100px; */
+}
+h1 {
+  font-size: 40px;
+  line-height: 0.8em;
+  color: rgba(255, 255, 255, 0.2);
+}
+
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+.tabs_container {
+  /* background-color: #828282; */
+  width: 640px;
+  display: block;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.tabs_container [class^="tab"] label,
+.tabs_container [class*=" tab"] label {
+  color: black;
+  cursor: pointer;
+  display: block;
+  font-size: 1.1em;
+  font-weight: 300;
+  line-height: 1em;
+  padding: 2rem 0;
+  text-align: center;
+}
+.tabs_container [class^="tab"] [type="radio"],
+.tabs_container [class*=" tab"] [type="radio"] {
+  border-bottom: 1px solid rgba(239, 237, 239, 0.5);
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: block;
+  width: 100%;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.tabs_container [class^="tab"] [type="radio"]:hover,
+.tabs_container [class^="tab"] [type="radio"]:focus,
+.tabs_container [class*=" tab"] [type="radio"]:hover,
+.tabs_container [class*=" tab"] [type="radio"]:focus {
+  border-bottom: 1px solid #fd264f;
+}
+.tabs_container [class^="tab"] [type="radio"]:checked,
+.tabs_container [class*=" tab"] [type="radio"]:checked {
+  border-bottom: 2px solid #fd264f;
+}
+.tabs_container [class^="tab"] [type="radio"]:checked + div,
+.tabs_container [class*=" tab"] [type="radio"]:checked + div {
+  opacity: 1;
+}
+.tabs_container [class^="tab"] [type="radio"] + div,
+.tabs_container [class*=" tab"] [type="radio"] + div {
+  display: block;
+  opacity: 0;
+  padding: 2rem 0;
+  width: 90%;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.tabs_container .tab {
+  width: 50%;
+}
+.tabs_container .tab [type="radio"] + div {
+  width: 200%;
+  margin-left: 200%;
+}
+.tabs_container .tab [type="radio"]:checked + div {
+  margin-left: 0;
+}
+.tabs_container .tab:last-child [type="radio"] + div {
+  margin-left: 100%;
+}
+.tabs_container .tab:last-child [type="radio"]:checked + div {
+  margin-left: -100%;
+}
