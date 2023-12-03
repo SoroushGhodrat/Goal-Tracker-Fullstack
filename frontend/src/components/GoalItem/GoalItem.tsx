@@ -1,15 +1,13 @@
-import styles from "./goalCard.module.css";
-
+import { useDispatch } from "react-redux";
 import { deleteGoal } from "../../features/goals/goalSlice";
-
+import { Goal } from "../../declarations/formData";
+import { AppDispatch } from "../../app/store";
+import styles from "./goalItem.module.css";
 import { LuBadgeInfo, LuTrash2, LuPencilLine } from "react-icons/lu";
 import "react-quill/dist/quill.snow.css";
 import Tooltip from "../UI/Tooltip/Tooltip";
 import { dateStandardizer, goalDuration } from "../../utils/dateStandardizer";
-import { Goal } from "../../declarations/formData";
-
-import { AppDispatch } from "../../app/store";
-import { useDispatch } from "react-redux";
+import { is } from "date-fns/locale";
 interface GoalItemProps {
   goal: Goal;
 }
@@ -19,11 +17,18 @@ type InputDate = {
   endDate: Date;
 };
 
-const GoalCard = ({ goal }: GoalItemProps) => {
+const GoalItem = ({ goal }: GoalItemProps) => {
   const dispatch: AppDispatch = useDispatch();
 
   const { createdAt, _id, text, selectedDates } = goal;
   const { startDate, endDate } = selectedDates as InputDate;
+
+  const _today = new Date();
+  const _startDate = dateStandardizer(startDate);
+  const _endDate = dateStandardizer(endDate);
+  const _remainDay = goalDuration(startDate, endDate);
+  const _isExpired = new Date(endDate) > _today;
+
   const handleEditGoal = () => {
     alert("Not implemented yet");
   };
@@ -81,12 +86,18 @@ const GoalCard = ({ goal }: GoalItemProps) => {
       />
 
       <section className={styles.duration}>
-        <p>Start at: {dateStandardizer(startDate)}</p>
-        <p>Due date: {dateStandardizer(endDate)}</p>
-        <p>Remain day(s) {goalDuration(startDate, endDate)}</p>
+        <p>Start at: {_startDate}</p>
+        <p>Due date: {_endDate}</p>
+        {_isExpired ? (
+          <p>
+            {_remainDay} day{_remainDay > 1 ? "s" : ""} left
+          </p>
+        ) : null}
+        {/* FIXME: finish today not be in finished goal */}
+        {_remainDay === 0 && <p>Finish today</p>}
       </section>
     </div>
   );
 };
 
-export default GoalCard;
+export default GoalItem;

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Spinner from "../../components/UI/Spiner/Spiner";
 import { getGoals, reset } from "../../features/goals/goalSlice";
-import GoalItem from "../../components/GoalItem";
+import GoalItem from "../../components/GoalItem/GoalItem";
 import { Goal } from "../../declarations/formData";
 import { AppDispatch } from "../../app/store";
 import goalImage from "../../assets/goal.png";
@@ -60,33 +60,50 @@ const GoalList = () => {
               defaultChecked={true}
             />
             <div>
-              {goals.map((goal: Goal) => {
-                if (goal.selectedDates) {
-                  const endDate = new Date(goal.selectedDates.endDate);
-                  const today = new Date();
+              {goals.filter(
+                (goal: Goal) =>
+                  goal.selectedDates &&
+                  new Date(goal.selectedDates.endDate) > new Date(),
+              ).length > 0 ? (
+                goals.map((goal: Goal) => {
+                  if (goal.selectedDates) {
+                    const endDate = new Date(goal.selectedDates.endDate);
+                    const today = new Date();
 
-                  if (endDate > today) {
-                    return <GoalItem key={goal._id} goal={goal} />;
+                    if (endDate >= today) {
+                      return <GoalItem key={goal._id} goal={goal} />;
+                    }
                   }
-                }
-                return null;
-              })}
+                  return null;
+                })
+              ) : (
+                <p>No in-progress goals</p>
+              )}
             </div>
           </div>
           <div className={tabstyles.tab}>
             <label htmlFor="tab_2">Finished Goals</label>
             <input id="tab_2" name="tabs-one" type="radio" />
             <div>
-              {goals.map((goal: Goal) => {
-                if (goal.selectedDates) {
-                  const endDate = new Date(goal.selectedDates.endDate);
-                  const today = new Date();
+              {goals.filter(
+                (goal: Goal) =>
+                  goal.selectedDates &&
+                  new Date(goal.selectedDates.endDate) < new Date(),
+              ).length > 0 ? (
+                goals.map((goal: Goal) => {
+                  if (goal.selectedDates) {
+                    const endDate = new Date(goal.selectedDates.endDate);
+                    const today = new Date();
 
-                  if (endDate < today) {
-                    return <GoalItem key={goal._id} goal={goal} />;
+                    if (endDate <= today) {
+                      return <GoalItem key={goal._id} goal={goal} />;
+                    }
                   }
-                }
-              })}
+                  return null;
+                })
+              ) : (
+                <p>No finished goals</p>
+              )}
             </div>
           </div>
         </div>
