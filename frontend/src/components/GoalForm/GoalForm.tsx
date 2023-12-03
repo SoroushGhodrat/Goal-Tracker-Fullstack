@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createGoal } from "../../features/goals/goalSlice";
 import { AppDispatch } from "../../app/store";
-import { format, set } from "date-fns";
+import { format } from "date-fns";
 import styles from "./goalForm.module.css";
 import TextEditor from "../TextEditor/TextEditor";
 import { DayPicker } from "react-day-picker";
@@ -10,6 +10,7 @@ import "react-day-picker/dist/style.css";
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 import useFormValidation from "../../hooks/useFormValidation";
 import Error from "../UI/Error/Error";
+import { toast } from "react-toastify";
 
 const initialCalendarState: SelectedDates = {
   startDate: undefined,
@@ -97,6 +98,7 @@ const GoalForm = () => {
     } else {
       // console.log("Form validation passed!");
       dispatch(createGoal({ text, selectedDates }));
+      toast.success("Goal created successfully");
       handleResetForm();
     }
   };
