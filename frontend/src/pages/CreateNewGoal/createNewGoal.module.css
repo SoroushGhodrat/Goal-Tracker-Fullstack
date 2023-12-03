@@ -1,0 +1,11 @@
+.heading {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 50px;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.heading p {
+  color: #828282;
+}

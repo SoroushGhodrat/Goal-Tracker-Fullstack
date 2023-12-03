@@ -1,11 +1,11 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import NewGoalForm from "./pages/CreateNewGoal";
+import NewGoalForm from "./pages/CreateNewGoal/CreateNewGoal";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Header from "./components/Navbar/Navbar";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import GoalList from "./pages/GoalList";
+import GoalList from "./pages/GoalList/GoalList";
 
 function App() {
   return (
