@@ -1,7 +1,7 @@
 .goal {
   background-color: #f4f4f4;
   border-radius: 6px;
-  margin: 10px 0;
+  margin: 10px 0 20px 0;
   padding: 20px;
   position: relative;
 }
@@ -73,9 +73,8 @@
 .duration {
   display: flex;
   flex-direction: row;
-
+  justify-content: center;
   margin-top: 30px;
-  padding-left: 30px;
   gap: 5%;
 }
 
