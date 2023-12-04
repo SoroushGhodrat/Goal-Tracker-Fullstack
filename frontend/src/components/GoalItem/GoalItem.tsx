@@ -6,8 +6,8 @@ import styles from "./goalItem.module.css";
 import { LuBadgeInfo, LuTrash2, LuPencilLine } from "react-icons/lu";
 import "react-quill/dist/quill.snow.css";
 import Tooltip from "../UI/Tooltip/Tooltip";
-import { dateStandardizer, goalDuration } from "../../utils/dateStandardizer";
-import { is } from "date-fns/locale";
+import { dayCalculator } from "../../utils/dateStandardizer";
+
 interface GoalItemProps {
   goal: Goal;
 }
@@ -23,11 +23,14 @@ const GoalItem = ({ goal }: GoalItemProps) => {
   const { createdAt, _id, text, selectedDates } = goal;
   const { startDate, endDate } = selectedDates as InputDate;
 
-  const _today = new Date();
-  const _startDate = dateStandardizer(startDate);
-  const _endDate = dateStandardizer(endDate);
-  const _remainDay = goalDuration(startDate, endDate);
-  const _isExpired = new Date(endDate) > _today;
+  const {
+    _startDate,
+    _endDate,
+    _remainDay,
+    _isGoalExpired,
+    _isGoalFinishToday,
+    _hoursLeft,
+  } = dayCalculator(startDate, endDate);
 
   const handleEditGoal = () => {
     alert("Not implemented yet");
@@ -88,13 +91,12 @@ const GoalItem = ({ goal }: GoalItemProps) => {
       <section className={styles.duration}>
         <p>Start at: {_startDate}</p>
         <p>Due date: {_endDate}</p>
-        {_isExpired ? (
+        {_isGoalExpired ? (
           <p>
             {_remainDay} day{_remainDay > 1 ? "s" : ""} left
           </p>
         ) : null}
-        {/* FIXME: finish today not be in finished goal */}
-        {_remainDay === 0 && <p>Finish today</p>}
+        {_isGoalFinishToday && <p>{_hoursLeft} hours left</p>}
       </section>
     </div>
   );
