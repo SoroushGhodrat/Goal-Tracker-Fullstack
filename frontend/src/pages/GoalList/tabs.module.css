@@ -88,7 +88,7 @@ select:focus {
 }
 
 .tabs_container .tab:nth-child(2) [type="radio"] + div {
-  margin-left: 100%;
+  margin-left: 200%;
 }
 
 .tabs_container .tab:nth-child(2) [type="radio"]:checked + div {

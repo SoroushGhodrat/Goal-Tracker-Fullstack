@@ -42,7 +42,6 @@
 .info {
   cursor: help;
   display: flex;
-
   flex-direction: row;
   align-items: center;
 }
@@ -62,7 +61,6 @@
 .goal_actions {
   display: flex;
   flex-direction: row;
-
   align-items: center;
 }
 
