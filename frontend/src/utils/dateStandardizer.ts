@@ -17,3 +17,35 @@ export const goalDuration = (startDate: Date, endDate: Date) => {
   const days = Math.round(duration / (1000 * 3600 * 24));
   return days;
 };
+
+export const dayCalculator = (startDate: Date, endDate: Date) => {
+  const _today = new Date();
+  const _startDate = dateStandardizer(startDate);
+  const _endDate = dateStandardizer(endDate);
+  const _remainDay = goalDuration(startDate, endDate);
+  const _isGoalExpired = new Date(endDate) > _today;
+  const _isGoalFinishToday = _remainDay === 0 ? true : false;
+
+  const _hoursLeft = _isGoalFinishToday
+    ? (() => {
+        const midnight = new Date();
+        midnight.setHours(24, 0, 0, 0);
+
+        const diffInMilliseconds = midnight.getTime() - _today.getTime();
+        const diffInHours = Math.round(diffInMilliseconds / (1000 * 60 * 60));
+
+        console.log(`Remaining hours until midnight: ${diffInHours}`);
+        return diffInHours;
+      })()
+    : undefined;
+
+  return {
+    _today: _today,
+    _startDate: _startDate,
+    _endDate: _endDate,
+    _remainDay: _remainDay,
+    _isGoalExpired: _isGoalExpired,
+    _isGoalFinishToday: _isGoalFinishToday,
+    _hoursLeft: _hoursLeft,
+  };
+};

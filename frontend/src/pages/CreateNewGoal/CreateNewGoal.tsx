@@ -6,7 +6,7 @@ const CreateNewGoal = () => {
   return (
     <>
       <section className={styles.heading}>
-        <p>Make your goal!</p>
+        <p>Add your goal!</p>
       </section>
       <br />
       <GoalForm />
