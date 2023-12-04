@@ -20,12 +20,15 @@ const Login = () => {
   const dispatch: ThunkDispatch<any, any, AnyAction> = useDispatch();
 
   const { user, isLoading, isError, isSuccess, message } = useSelector(
-    (state: any) => state.auth,
+    (state: any) => state.auth
   );
 
   useEffect(() => {
     if (isError) {
       toast.error(message);
+      toast.error(
+        `If you are in development mode, please restart the server. Write 'rs' in the terminal and press enter.`
+      );
     }
 
     if (isSuccess || user) {
