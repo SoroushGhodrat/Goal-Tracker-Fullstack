@@ -60,11 +60,11 @@
   margin-bottom: 20px;
 }
 
-.btn_custom {
+.btn {
   padding: 10px 20px;
-  border: 1px solid #337ab7;
+  border: 1px solid #000;
   border-radius: 5px;
-  background: #337ab7;
+  background: #000;
   color: #fff;
   font-size: 16px;
   font-weight: 700;
@@ -74,4 +74,54 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.btn_reverse {
+  background: #fff;
+  color: #000;
+}
+
+.btn_block {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.btn:hover {
+  transform: scale(0.98);
+}
+
+.form {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+
+.form form {
+  width: 650px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.form_group input {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.form_group input,
+.form_group textarea,
+.form_group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-family: inherit;
+}
+
+.form_group label {
+  text-align: left;
+  display: block;
+  margin: 0 0 5px 3px;
 }

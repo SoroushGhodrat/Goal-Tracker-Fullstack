@@ -108,9 +108,9 @@ const GoalForm = () => {
   };
 
   return (
-    <section className="form">
+    <section className={styles.form}>
       <form onSubmit={onSubmit}>
-        <div className="form-group">
+        <div className={styles.form_group}>
           <label htmlFor="text">Description</label>
           <TextEditor value={text} onChange={handleTextChange} />
         </div>
@@ -148,14 +148,14 @@ const GoalForm = () => {
 
         <div className={styles.button_group}>
           <button
-            className={styles.btn_custom}
+            className={`${styles.btn} ${styles.btn_reverse}`}
             type="reset"
             onClick={handleResetForm}
           >
             Reset
           </button>
 
-          <button className={styles.btn_custom} type="submit">
+          <button className={styles.btn} type="submit">
             Add Goal
           </button>
         </div>
