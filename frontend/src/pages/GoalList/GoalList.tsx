@@ -9,6 +9,7 @@ import { AppDispatch } from "../../app/store";
 import goalImage from "../../assets/goal.png";
 import styles from "./goalList.module.css";
 import tabstyles from "./tabs.module.css";
+import { dayCalculator } from "../../utils/dateStandardizer";
 
 const GoalList = () => {
   const navigate = useNavigate();
@@ -40,10 +41,20 @@ const GoalList = () => {
     return <Spinner />;
   }
 
+  const inProgressGoals = goals.filter(
+    (goal: Goal) =>
+      goal.selectedDates && new Date(goal.selectedDates.endDate) > new Date(),
+  );
+
+  const finishedGoals = goals.filter(
+    (goal: Goal) =>
+      goal.selectedDates && new Date(goal.selectedDates.endDate) < new Date(),
+  );
+
   return (
     <>
       <section className={styles.heading}>
-        <h1>Goals List</h1>
+        <p>Goals List</p>
         <div className={styles.img_banner}>
           <img src={goalImage} alt="Goal" />
         </div>
@@ -52,7 +63,7 @@ const GoalList = () => {
       <section>
         <div className={tabstyles.tabs_container}>
           <div className={tabstyles.tab}>
-            <label htmlFor="tab_1">Inprogress Goals</label>
+            <label htmlFor="tab_1">In Progress Goals</label>
             <input
               id="tab_1"
               name="tabs-one"
@@ -60,24 +71,26 @@ const GoalList = () => {
               defaultChecked={true}
             />
             <div>
-              {goals.filter(
-                (goal: Goal) =>
-                  goal.selectedDates &&
-                  new Date(goal.selectedDates.endDate) > new Date(),
-              ).length > 0 ? (
+              {inProgressGoals.length > 0 ? (
                 goals.map((goal: Goal) => {
                   if (goal.selectedDates) {
-                    const endDate = new Date(goal.selectedDates.endDate);
-                    const today = new Date();
+                    const { _today, _endDate, _isGoalFinishToday } =
+                      dayCalculator(
+                        goal.selectedDates.startDate,
+                        goal.selectedDates.endDate,
+                      );
 
-                    if (endDate >= today) {
+                    if (
+                      new Date(_endDate) > new Date(_today) ||
+                      _isGoalFinishToday
+                    ) {
                       return <GoalItem key={goal._id} goal={goal} />;
                     }
                   }
                   return null;
                 })
               ) : (
-                <p>No in-progress goals</p>
+                <p>You don't have any in progress goals yet!</p>
               )}
             </div>
           </div>
@@ -85,24 +98,22 @@ const GoalList = () => {
             <label htmlFor="tab_2">Finished Goals</label>
             <input id="tab_2" name="tabs-one" type="radio" />
             <div>
-              {goals.filter(
-                (goal: Goal) =>
-                  goal.selectedDates &&
-                  new Date(goal.selectedDates.endDate) < new Date(),
-              ).length > 0 ? (
+              {finishedGoals.length > 0 ? (
                 goals.map((goal: Goal) => {
                   if (goal.selectedDates) {
-                    const endDate = new Date(goal.selectedDates.endDate);
-                    const today = new Date();
+                    const { _isGoalExpired, _hoursLeft } = dayCalculator(
+                      goal.selectedDates.startDate,
+                      goal.selectedDates.endDate,
+                    );
 
-                    if (endDate <= today) {
+                    if (!_isGoalExpired && !_hoursLeft) {
                       return <GoalItem key={goal._id} goal={goal} />;
                     }
                   }
                   return null;
                 })
               ) : (
-                <p>No finished goals</p>
+                <p>You don't have any finished goals yet!</p>
               )}
             </div>
           </div>
