@@ -9,7 +9,8 @@ import { AppDispatch } from "../../app/store";
 import goalImage from "../../assets/goal.png";
 import styles from "./goalList.module.css";
 import tabstyles from "./tabs.module.css";
-import { dayCalculator } from "../../utils/dateStandardizer";
+import { dayCalculator } from "../../utils/helper";
+import PieChart from "../../components/UI/PieChart/PieChart";
 
 const GoalList = () => {
   const navigate = useNavigate();
@@ -94,6 +95,7 @@ const GoalList = () => {
               )}
             </div>
           </div>
+
           <div className={tabstyles.tab}>
             <label htmlFor="tab_2">Finished Goals</label>
             <input id="tab_2" name="tabs-one" type="radio" />
@@ -114,6 +116,21 @@ const GoalList = () => {
                 })
               ) : (
                 <p>You don't have any finished goals yet!</p>
+              )}
+            </div>
+          </div>
+
+          <div className={tabstyles.tab}>
+            <label htmlFor="tab_3">Goals Chart</label>
+            <input id="tab_3" name="tabs-one" type="radio" />
+            <div>
+              {goals.length > 0 ? (
+                <PieChart
+                  inProgressGoals={inProgressGoals}
+                  finishedGoals={finishedGoals}
+                />
+              ) : (
+                "You don't have any goals yet!"
               )}
             </div>
           </div>

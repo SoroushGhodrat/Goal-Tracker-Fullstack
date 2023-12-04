@@ -18,7 +18,11 @@ export const goalDuration = (startDate: Date, endDate: Date) => {
   return days;
 };
 
-export const dayCalculator = (startDate: Date, endDate: Date) => {
+export const dayCalculator = (
+  startDate: Date,
+  endDate: Date,
+  createdAt?: Date | undefined,
+) => {
   const _today = new Date();
   const _startDate = dateStandardizer(startDate);
   const _endDate = dateStandardizer(endDate);
@@ -34,7 +38,6 @@ export const dayCalculator = (startDate: Date, endDate: Date) => {
         const diffInMilliseconds = midnight.getTime() - _today.getTime();
         const diffInHours = Math.round(diffInMilliseconds / (1000 * 60 * 60));
 
-        console.log(`Remaining hours until midnight: ${diffInHours}`);
         return diffInHours;
       })()
     : undefined;

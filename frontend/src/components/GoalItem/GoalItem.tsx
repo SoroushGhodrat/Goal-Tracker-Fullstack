@@ -6,7 +6,7 @@ import styles from "./goalItem.module.css";
 import { LuBadgeInfo, LuTrash2, LuPencilLine } from "react-icons/lu";
 import "react-quill/dist/quill.snow.css";
 import Tooltip from "../UI/Tooltip/Tooltip";
-import { dayCalculator } from "../../utils/dateStandardizer";
+import { dayCalculator } from "../../utils/helper";
 
 interface GoalItemProps {
   goal: Goal;
@@ -44,7 +44,7 @@ const GoalItem = ({ goal }: GoalItemProps) => {
 
           <div>
             <p>
-              Created at:
+              Created at:&nbsp;
               {createdAt
                 ? new Date(createdAt).toLocaleDateString("en-US", {
                     day: "numeric",

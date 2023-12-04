@@ -12,11 +12,6 @@ import useFormValidation from "../../hooks/useFormValidation";
 import Error from "../UI/Error/Error";
 import { toast } from "react-toastify";
 
-const initialCalendarState: SelectedDates = {
-  startDate: undefined,
-  endDate: undefined,
-};
-
 interface Error {
   textError: string | undefined;
   startDateError: string | undefined;
@@ -24,18 +19,21 @@ interface Error {
   isErrored?: boolean;
 }
 
-const initialErrorsState: Error = {
-  textError: undefined,
-  startDateError: undefined,
-  endDateError: undefined,
-};
-
 type InputDate = Date | undefined;
 
 interface SelectedDates {
   startDate: InputDate;
   endDate: InputDate;
 }
+const initialCalendarState: SelectedDates = {
+  startDate: undefined,
+  endDate: undefined,
+};
+const initialErrorsState: Error = {
+  textError: undefined,
+  startDateError: undefined,
+  endDateError: undefined,
+};
 
 const GoalForm = () => {
   const dispatch: AppDispatch = useDispatch();
