@@ -7,6 +7,8 @@ import { toast } from "react-toastify";
 import { login, reset } from "../features/auth/authSlice";
 import Spinner from "../components/UI/Spiner/Spiner";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
+import loginImage from "../assets/login.png";
+import styles from "./login.module.css";
 
 const Login = () => {
   const [formData, setFormData] = useState<FormDataLogin>({
@@ -20,14 +22,14 @@ const Login = () => {
   const dispatch: ThunkDispatch<any, any, AnyAction> = useDispatch();
 
   const { user, isLoading, isError, isSuccess, message } = useSelector(
-    (state: any) => state.auth
+    (state: any) => state.auth,
   );
 
   useEffect(() => {
     if (isError) {
       toast.error(message);
       toast.error(
-        `If you are in development mode, please restart the server. Write 'rs' in the terminal and press enter.`
+        `If you are in development mode, please restart the server. Write 'rs' in the terminal and press enter.`,
       );
     }
 
@@ -66,7 +68,7 @@ const Login = () => {
 
   return (
     <>
-      <section className="heading">
+      <section className={styles.heading}>
         <h1>
           <FaSignInAlt /> Login
         </h1>
@@ -79,9 +81,12 @@ const Login = () => {
         <br />
       </section>
 
-      <section className="form">
+      <section className={styles.form}>
+        <div className={styles.login_image}>
+          <img src={loginImage} alt="Goal" />
+        </div>
         <form onSubmit={onSubmit}>
-          <div className="form-group">
+          <div className={styles.form_group}>
             <label htmlFor="email">Email</label>
             <input
               type="email"
@@ -94,7 +99,7 @@ const Login = () => {
               onChange={onChange}
             />
           </div>
-          <div className="form-group">
+          <div className={styles.form_group}>
             <label htmlFor="password">Password</label>
             <input
               type="password"
@@ -107,7 +112,7 @@ const Login = () => {
               onChange={onChange}
             />
           </div>
-          <div className="form-group">
+          <div className={styles.form_group}>
             <button type="submit" className="btn btn-block">
               Login
             </button>

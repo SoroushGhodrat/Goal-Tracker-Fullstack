@@ -18,11 +18,7 @@ export const goalDuration = (startDate: Date, endDate: Date) => {
   return days;
 };
 
-export const dayCalculator = (
-  startDate: Date,
-  endDate: Date,
-  createdAt?: Date | undefined,
-) => {
+export const dayCalculator = (startDate: Date, endDate: Date) => {
   const _today = new Date();
   const _startDate = dateStandardizer(startDate);
   const _endDate = dateStandardizer(endDate);
