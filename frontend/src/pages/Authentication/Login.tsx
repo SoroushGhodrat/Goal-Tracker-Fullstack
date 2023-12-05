@@ -1,17 +1,20 @@
 import { useState, useEffect } from "react";
-import { FormDataLogin } from "../declarations/formData";
+import { FormDataLogin } from "../../declarations/formData";
 import { FaSignInAlt } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { login, reset } from "../features/auth/authSlice";
-import Spinner from "../components/UI/Spiner/Spiner";
+import { login, reset } from "../../features/auth/authSlice";
+import Spinner from "../../components/UI/Spiner/Spiner";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
-import loginImage from "../assets/login.png";
+import loginImage from "../../assets/login.png";
 import styles from "./login.module.css";
-import Button from "../components/UI/Button/Button";
+import Button from "../../components/UI/Button/Button";
+import { RiEyeLine, RiEyeCloseLine } from "react-icons/ri";
 
 const Login = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
   const [formData, setFormData] = useState<FormDataLogin>({
     email: "",
     password: "",
@@ -67,6 +70,10 @@ const Login = () => {
     return <Spinner />;
   }
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <>
       <section className={styles.heading}>
@@ -102,16 +109,26 @@ const Login = () => {
           </div>
           <div className={styles.form_group}>
             <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              className="form-control"
-              autoComplete="current-password"
-              id="password"
-              name="password"
-              value={password}
-              placeholder=""
-              onChange={onChange}
-            />
+            <div className={styles.password_reveal}>
+              <input
+                type={showPassword ? "text" : "password"}
+                className="form-control"
+                autoComplete="current-password"
+                id="password"
+                name="password"
+                value={password}
+                placeholder=""
+                onChange={onChange}
+              />
+              <span>
+                <i
+                  onClick={togglePasswordVisibility}
+                  className={styles.toggler}
+                >
+                  {showPassword ? <RiEyeLine /> : <RiEyeCloseLine />}
+                </i>
+              </span>
+            </div>
           </div>
           <div className={styles.form_group}>
             <Button type="submit" variant="contained" size="large">

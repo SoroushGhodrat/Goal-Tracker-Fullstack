@@ -2,16 +2,24 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { FormDataRegister } from "../declarations/formData";
+import { FormDataRegister } from "../../declarations/formData";
 import { FaUser } from "react-icons/fa";
-import { register, reset } from "../features/auth/authSlice";
-import Spinner from "../components/UI/Spiner/Spiner";
+import { register, reset } from "../../features/auth/authSlice";
+import Spinner from "../../components/UI/Spiner/Spiner";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import styles from "./login.module.css";
-import signupImage from "../assets/signup.png";
-import Button from "../components/UI/Button/Button";
+import signupImage from "../../assets/signup.png";
+import Button from "../../components/UI/Button/Button";
+import { RiEyeLine, RiEyeCloseLine } from "react-icons/ri";
 
 const Register = () => {
+  const [showPassword, setShowPassword] = useState<{
+    password: boolean;
+    confirmPassword: boolean;
+  }>({
+    password: false,
+    confirmPassword: false,
+  });
   const [formData, setFormData] = useState<FormDataRegister>({
     name: "",
     email: "",
@@ -71,6 +79,16 @@ const Register = () => {
     return <Spinner />;
   }
 
+  const togglePasswordVisibility = (field: "password" | "confirmPassword") => {
+    return (event: React.MouseEvent) => {
+      event.preventDefault();
+      setShowPassword((prevState) => ({
+        ...prevState,
+        [field]: !prevState[field],
+      }));
+    };
+  };
+
   return (
     <>
       <section className={styles.heading}>
@@ -112,32 +130,56 @@ const Register = () => {
 
           <div className={styles.form_group}>
             <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              className="form-control"
-              autoComplete="current-password"
-              id="password"
-              name="password"
-              value={password}
-              placeholder=""
-              onChange={onChange}
-            />
+            <div className={styles.password_reveal}>
+              <input
+                type={showPassword.password ? "text" : "password"}
+                className="form-control"
+                autoComplete="current-password"
+                id="password"
+                name="password"
+                value={password}
+                placeholder=""
+                onChange={onChange}
+              />
+              <span>
+                <i
+                  onClick={togglePasswordVisibility("password")}
+                  className={styles.toggler}
+                >
+                  {showPassword.password ? <RiEyeLine /> : <RiEyeCloseLine />}
+                </i>
+              </span>
+            </div>
           </div>
 
           <div className={styles.form_group}>
             <label htmlFor="confirm_password">Confirm Password</label>
-            <input
-              type="password"
-              className="form-control"
-              autoComplete="new-password"
-              id="confirm_password"
-              name="confirm_password"
-              value={confirm_password}
-              placeholder=""
-              onChange={onChange}
-            />
-          </div>
+            <div className={styles.password_reveal}>
+              <input
+                type={showPassword.confirmPassword ? "text" : "password"}
+                className="form-control"
+                autoComplete="new-password"
+                id="confirm_password"
+                name="confirm_password"
+                value={confirm_password}
+                placeholder=""
+                onChange={onChange}
+              />
 
+              <span>
+                <i
+                  onClick={togglePasswordVisibility("confirmPassword")}
+                  className={styles.toggler}
+                >
+                  {showPassword.confirmPassword ? (
+                    <RiEyeLine />
+                  ) : (
+                    <RiEyeCloseLine />
+                  )}
+                </i>
+              </span>
+            </div>
+          </div>
           <div className={styles.form_group}>
             <Button type="submit" variant="contained" size="large">
               Submit
