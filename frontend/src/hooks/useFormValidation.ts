@@ -6,18 +6,21 @@ interface Error {
   endDateError: string | undefined;
 }
 
-const initialErrorsState: Error = {
-  textError: undefined,
-  startDateError: undefined,
-  endDateError: undefined,
-};
-
 type InputDate = Date | undefined;
 
 interface SelectedDates {
   startDate: InputDate;
   endDate: InputDate;
 }
+const initialCalendarState: SelectedDates = {
+  startDate: undefined,
+  endDate: undefined,
+};
+const initialErrorsState: Error = {
+  textError: undefined,
+  startDateError: undefined,
+  endDateError: undefined,
+};
 
 const useFormValidation = (text: string, selectedDates: SelectedDates) => {
   const [errors, setErrors] = useState(initialErrorsState);
@@ -27,6 +30,7 @@ const useFormValidation = (text: string, selectedDates: SelectedDates) => {
       setErrors((prevErrors) => ({
         ...prevErrors,
         textError: "Description is required.",
+        isErrored: true,
       }));
       return false;
     }
@@ -40,6 +44,7 @@ const useFormValidation = (text: string, selectedDates: SelectedDates) => {
       setErrors((prevErrors) => ({
         ...prevErrors,
         startDateError: "Start date is required.",
+        isErrored: true,
       }));
       return false;
     }
@@ -53,6 +58,7 @@ const useFormValidation = (text: string, selectedDates: SelectedDates) => {
       setErrors((prevErrors) => ({
         ...prevErrors,
         endDateError: "End date is required.",
+        isErrored: true,
       }));
       return false;
     }
@@ -64,6 +70,7 @@ const useFormValidation = (text: string, selectedDates: SelectedDates) => {
       setErrors((prevErrors) => ({
         ...prevErrors,
         endDateError: "End date cannot be before start date.",
+        isErrored: true,
       }));
       return false;
     }

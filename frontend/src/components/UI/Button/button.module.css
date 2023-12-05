@@ -1,0 +1,75 @@
+:root {
+  --white: #fff;
+  --black: #000;
+  --bluewood: #34495e;
+  --bluewood-light: #bdccdb;
+  --bluewood-dark: #2c3e50;
+  --grey: #d4d8da;
+}
+
+button {
+  border: 1px solid var(--black);
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    color 0.5s,
+    background-color 0.5s;
+}
+
+button.contained {
+  background: var(--bluewood);
+  color: var(--white);
+}
+
+button.contained:hover {
+  background: var(--bluewood-dark);
+  font-size: 13.9px;
+}
+
+button.outlined {
+  background: var(--white);
+  color: var(--black);
+}
+
+button.outlined:hover {
+  background: var(--bluewood-light);
+  color: var(--white);
+}
+
+button.text {
+  background: transparent;
+  color: var(--black);
+}
+
+button.text:hover {
+  background: var(--grey);
+}
+
+button.disabled {
+  border: 1px solid var(--black);
+  border-radius: 5px;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+button.small {
+  padding: 0.3125rem 0.625rem;
+  font-size: 0.75rem;
+}
+
+button.medium {
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+}
+
+button.large {
+  padding: 0.9375rem 1.875rem;
+  font-size: 1rem;
+}
