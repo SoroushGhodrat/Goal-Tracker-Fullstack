@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout, reset } from "../../features/auth/authSlice";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import styles from "./navbar.module.css";
+import Button from "../UI/Button/Button";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -31,9 +32,15 @@ const Navbar = () => {
             </li>
 
             <li>
-              <button className="btn" onClick={onLogout}>
-                <FaSignOutAlt /> LOGOUT
-              </button>
+              <Button
+                variant="contained"
+                size="medium"
+                type="button"
+                onClick={onLogout}
+              >
+                <FaSignOutAlt />
+                &nbsp;&nbsp;LOGOUT
+              </Button>
             </li>
           </>
         ) : (
