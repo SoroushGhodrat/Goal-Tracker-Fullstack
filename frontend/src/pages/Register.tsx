@@ -9,6 +9,7 @@ import Spinner from "../components/UI/Spiner/Spiner";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import styles from "./login.module.css";
 import signupImage from "../assets/signup.png";
+import Button from "../components/UI/Button/Button";
 
 const Register = () => {
   const [formData, setFormData] = useState<FormDataRegister>({
@@ -138,9 +139,9 @@ const Register = () => {
           </div>
 
           <div className={styles.form_group}>
-            <button type="submit" className="btn btn-block">
+            <Button type="submit" variant="contained" size="large">
               Submit
-            </button>
+            </Button>
           </div>
         </form>
         <div className={styles.signup_image}>

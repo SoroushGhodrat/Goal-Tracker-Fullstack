@@ -23,6 +23,11 @@
   justify-content: center;
 }
 
+.form_group {
+  display: flex;
+  flex-direction: column;
+}
+
 .form_group input {
   margin-bottom: 10px;
   width: 100%;
