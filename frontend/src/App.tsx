@@ -6,6 +6,7 @@ import Header from "./components/Navbar/Navbar";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import GoalList from "./pages/GoalList/GoalList";
+import Page404 from "./pages/404/Page404";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/goalList" element={<GoalList />} />
-            <Route path="*" element={<h1>Not Found</h1>} />
+            <Route path="*" element={<Page404 />} />
           </Routes>
         </div>
       </Router>
