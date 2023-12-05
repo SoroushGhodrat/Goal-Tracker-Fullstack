@@ -11,12 +11,12 @@ import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 import useFormValidation from "../../hooks/useFormValidation";
 import Error from "../UI/Error/Error";
 import { toast } from "react-toastify";
+import Button from "../UI/Button/Button";
 
 interface Error {
   textError: string | undefined;
   startDateError: string | undefined;
   endDateError: string | undefined;
-  isErrored?: boolean;
 }
 
 type InputDate = Date | undefined;
@@ -47,7 +47,7 @@ const GoalForm = () => {
     setIsCalendarVisible(!isCalendarVisible);
   };
 
-  // Custom hook for form validation hook
+  // Custom hook for form validation
   const { errors, setErrors, validateForm } = useFormValidation(
     text,
     selectedDates,
@@ -147,17 +147,18 @@ const GoalForm = () => {
         {errors.endDateError && <Error error={errors.endDateError} />}
 
         <div className={styles.button_group}>
-          <button
-            className={`${styles.btn} ${styles.btn_reverse}`}
-            type="reset"
+          <Button
+            variant="outlined"
+            size="medium"
+            type="button"
             onClick={handleResetForm}
           >
             Reset
-          </button>
+          </Button>
 
-          <button className={styles.btn} type="submit">
+          <Button type="submit" variant="contained" size="medium">
             Add Goal
-          </button>
+          </Button>
         </div>
       </form>
     </section>
