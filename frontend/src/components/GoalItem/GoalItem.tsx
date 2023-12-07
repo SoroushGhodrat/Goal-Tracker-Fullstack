@@ -7,6 +7,8 @@ import { LuBadgeInfo, LuTrash2, LuPencilLine } from "react-icons/lu";
 import "react-quill/dist/quill.snow.css";
 import Tooltip from "../UI/Tooltip/Tooltip";
 import { dayCalculator } from "../../utils/helper";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 interface GoalItemProps {
   goal: Goal;
@@ -32,8 +34,22 @@ const GoalItem = ({ goal }: GoalItemProps) => {
     _hoursLeft,
   } = dayCalculator(startDate, endDate);
 
-  const handleEditGoal = () => {
-    alert("Not implemented yet");
+  const navigate = useNavigate();
+
+  const handleEditGoal = (goal_id: string | undefined) => {
+    navigate("/goalForm/");
+    sessionStorage.setItem("VIE_MODE", "edit");
+    sessionStorage.setItem("goal_id", goal_id || "");
+  };
+
+  const handleDeleteGoal = (goal_id: string | undefined) => {
+    if (!goal_id) {
+      toast.error("Cannot fing goal id");
+      return;
+    }
+
+    dispatch(deleteGoal(goal_id));
+    toast.success("Goal deleted successfully");
   };
 
   return (
@@ -64,7 +80,7 @@ const GoalItem = ({ goal }: GoalItemProps) => {
             <LuPencilLine
               size={30}
               className={styles.edit_icon}
-              onClick={handleEditGoal}
+              onClick={() => handleEditGoal(goal._id)}
             />
           </Tooltip>
 
@@ -76,7 +92,7 @@ const GoalItem = ({ goal }: GoalItemProps) => {
             <LuTrash2
               size={20}
               className={styles.delete_icon}
-              onClick={() => _id && dispatch(deleteGoal(_id))}
+              onClick={() => handleDeleteGoal(goal._id)}
             />
           </Tooltip>
         </div>

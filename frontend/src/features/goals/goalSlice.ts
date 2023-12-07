@@ -55,6 +55,28 @@ export const getGoals = createAsyncThunk(
   },
 );
 
+export const updateGoal = createAsyncThunk(
+  "goals/update",
+  async (
+    { goalId, goalData }: { goalId: string; goalData: any },
+    thunkAPI: any,
+  ) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      console.log(token);
+      return await goalService.updateGoal(goalId, goalData, token);
+    } catch (error: any) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  },
+);
+
 // Delete user goal
 export const deleteGoal = createAsyncThunk(
   "goals/delete",
@@ -83,6 +105,7 @@ export const goalSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+
       // create a new goal
       .addCase(createGoal.pending, (state) => {
         state.isLoading = true;
@@ -97,6 +120,7 @@ export const goalSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
       })
+
       // get all goals
       .addCase(getGoals.pending, (state) => {
         state.isLoading = true;
@@ -111,7 +135,26 @@ export const goalSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
       })
-      //   // delete a goal
+
+      // update a goal
+      .addCase(updateGoal.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updateGoal.fulfilled, (state, action) => {
+        console.log("action.payload: ", action.payload);
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.goals = state.goals.map((goal: any) =>
+          goal._id === action.payload._id ? action.payload : goal,
+        );
+      })
+      .addCase(updateGoal.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+
+      // delete a goal
       .addCase(deleteGoal.pending, (state) => {
         state.isLoading = true;
       })

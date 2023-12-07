@@ -56,7 +56,9 @@ const updateGoal = async (
   res: Response,
   next: NextFunction,
 ) => {
-  const goalId = req.params.id;
+
+  // res.status(200).json({ message: "update goal" + req.params.id });
+   const goalId = req.params.id;
 
   const goal = await Goal.findById(goalId);
 

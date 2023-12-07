@@ -7,6 +7,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import GoalList from "./pages/GoalList/GoalList";
 import Page404 from "./pages/404/Page404";
+import GoalForm from "./components/GoalForm/GoalForm";
 
 function App() {
   return (
@@ -15,10 +16,11 @@ function App() {
         <Header />
         <div className="container">
           <Routes>
-            <Route path="/newGoalForm" element={<NewGoalForm />} />
+            <Route path="/new-goal-form" element={<NewGoalForm />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/goalList" element={<GoalList />} />
+            <Route path="/goals-list" element={<GoalList />} />
+            <Route path="/goalForm" element={<GoalForm />} />
             <Route path="*" element={<Page404 />} />
           </Routes>
         </div>

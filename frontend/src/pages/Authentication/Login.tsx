@@ -38,7 +38,7 @@ const Login = () => {
     }
 
     if (isSuccess || user) {
-      navigate("/goalList");
+      navigate("/goals-list");
     }
 
     dispatch(reset());
