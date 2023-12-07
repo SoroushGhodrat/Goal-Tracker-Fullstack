@@ -7,14 +7,12 @@ import styles from "./navbar.module.css";
 import Button from "../UI/Button/Button";
 
 const Navbar = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch<ThunkDispatch<any, any, AnyAction>>();
   const { user } = useSelector((state: any) => state.auth);
 
   const onLogout = () => {
     dispatch(logout());
     dispatch(reset());
-    navigate("/register");
   };
 
   return (
@@ -25,10 +23,10 @@ const Navbar = () => {
         {user ? (
           <>
             <li>
-              <Link to="/goalList">GOAL LIST</Link>
+              <Link to="/goals-list">GOAL LIST</Link>
             </li>
             <li>
-              <Link to="/newGoalForm">GREATE A NEW GOAL</Link>
+              <Link to="/new-goal-form">GREATE A NEW GOAL</Link>
             </li>
 
             <li>

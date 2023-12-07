@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { createGoal } from "../../features/goals/goalSlice";
-import { AppDispatch } from "../../app/store";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { createGoal, updateGoal } from "../../features/goals/goalSlice";
+import { AppDispatch, RootState } from "../../app/store";
 import { format } from "date-fns";
 import styles from "./goalForm.module.css";
 import TextEditor from "../TextEditor/TextEditor";
@@ -12,6 +12,7 @@ import useFormValidation from "../../hooks/useFormValidation";
 import Error from "../UI/Error/Error";
 import { toast } from "react-toastify";
 import Button from "../UI/Button/Button";
+import { useNavigate } from "react-router-dom";
 
 interface Error {
   textError: string | undefined;
@@ -35,12 +36,20 @@ const initialErrorsState: Error = {
   endDateError: undefined,
 };
 
-const GoalForm = () => {
+const GoalForm: React.FC = () => {
+  const navigate = useNavigate();
+
   const dispatch: AppDispatch = useDispatch();
 
+  const goal = useSelector((state: RootState) => state.goals.goals);
+
+  const [VIEW_MODE, setVIEW_MODE] = useState<"create" | "edit">("create");
+
   const [text, setText] = useState<string>("");
+
   const [selectedDates, setSelectedDates] =
     useState<SelectedDates>(initialCalendarState);
+
   const [isCalendarVisible, setIsCalendarVisible] = useState(true);
 
   const toggleCalendar = () => {
@@ -52,6 +61,33 @@ const GoalForm = () => {
     text,
     selectedDates,
   );
+
+  // ===== get goal id from local storage and search for the editable goal
+  useEffect(() => {
+    const VIEW_MODE = sessionStorage?.getItem("VIE_MODE");
+    const goal_id = sessionStorage?.getItem("goal_id");
+
+    const matchedGoal = goal.find((goal) => goal._id === goal_id);
+
+    if (
+      matchedGoal &&
+      matchedGoal.text &&
+      matchedGoal.selectedDates &&
+      VIEW_MODE === "edit"
+    ) {
+      setVIEW_MODE(VIEW_MODE);
+      setText(matchedGoal.text);
+      if (
+        typeof matchedGoal.selectedDates.startDate === "string" &&
+        typeof matchedGoal.selectedDates.endDate === "string"
+      ) {
+        setSelectedDates({
+          startDate: new Date(matchedGoal.selectedDates.startDate),
+          endDate: new Date(matchedGoal.selectedDates.endDate),
+        });
+      }
+    }
+  }, []);
 
   let startDateFooter = <p>Please select a start date.</p>;
   if (selectedDates.startDate) {
@@ -91,12 +127,11 @@ const GoalForm = () => {
     e.preventDefault();
 
     if (!validateForm()) {
-      // console.log("Form validation failed: ", errors);
       return;
     } else {
-      // console.log("Form validation passed!");
       dispatch(createGoal({ text, selectedDates }));
       toast.success("Goal created successfully");
+      navigate("/goals-list");
       handleResetForm();
     }
   };
@@ -105,10 +140,45 @@ const GoalForm = () => {
     setText("");
     setSelectedDates(initialCalendarState);
     setErrors(initialErrorsState);
+    console.log(VIEW_MODE);
+  };
+
+  const handleCancelEditGoal = () => {
+    navigate("/goals-list");
+    handleResetForm();
+    sessionStorage.removeItem("goal_id");
+    sessionStorage.removeItem("VIE_MODE");
+  };
+
+  const handleUpdateGoal = () => {
+    if (!validateForm()) {
+      return;
+    } else {
+      const goal_id = sessionStorage.getItem("goal_id");
+      if (goal_id === null) {
+        toast.error("Cannot find goal id!");
+        return;
+      }
+      dispatch(
+        updateGoal({ goalId: goal_id, goalData: { text, selectedDates } }),
+      );
+      toast.success("Goal updated successfully!");
+      handleResetForm();
+      sessionStorage.removeItem("goal_id");
+      sessionStorage.removeItem("VIE_MODE");
+      navigate("/goals-list");
+    }
   };
 
   return (
     <section className={styles.form}>
+      <section className={styles.heading}>
+        {VIEW_MODE === "edit" ? (
+          <p>Your Goal is ready to edit!</p>
+        ) : (
+          <p>Add your goal!</p>
+        )}
+      </section>
       <form onSubmit={onSubmit}>
         <div className={styles.form_group}>
           <label htmlFor="text">Description</label>
@@ -156,9 +226,30 @@ const GoalForm = () => {
             Reset
           </Button>
 
-          <Button type="submit" variant="contained" size="medium">
-            Add Goal
-          </Button>
+          {VIEW_MODE === "edit" ? (
+            <>
+              <Button
+                variant="outlined"
+                size="medium"
+                type="button"
+                onClick={handleCancelEditGoal}
+              >
+                cancle and close
+              </Button>
+              <Button
+                variant="contained"
+                size="medium"
+                type="button"
+                onClick={handleUpdateGoal}
+              >
+                Update Goal
+              </Button>
+            </>
+          ) : (
+            <Button type="submit" variant="contained" size="medium">
+              Add Goal
+            </Button>
+          )}
         </div>
       </form>
     </section>
