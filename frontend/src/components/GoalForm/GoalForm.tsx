@@ -140,7 +140,6 @@ const GoalForm: React.FC = () => {
     setText("");
     setSelectedDates(initialCalendarState);
     setErrors(initialErrorsState);
-    console.log(VIEW_MODE);
   };
 
   const handleCancelEditGoal = () => {

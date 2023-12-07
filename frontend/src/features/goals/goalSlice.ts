@@ -141,7 +141,6 @@ export const goalSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(updateGoal.fulfilled, (state, action) => {
-        console.log("action.payload: ", action.payload);
         state.isLoading = false;
         state.isSuccess = true;
         state.goals = state.goals.map((goal: any) =>
