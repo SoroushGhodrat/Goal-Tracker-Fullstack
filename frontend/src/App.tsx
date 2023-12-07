@@ -16,8 +16,9 @@ function App() {
         <Header />
         <div className="container">
           <Routes>
-            <Route path="/new-goal-form" element={<NewGoalForm />} />
+            <Route path="/" element={<Login />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/new-goal-form" element={<NewGoalForm />} />
             <Route path="/register" element={<Register />} />
             <Route path="/goals-list" element={<GoalList />} />
             <Route path="/goalForm" element={<GoalForm />} />
