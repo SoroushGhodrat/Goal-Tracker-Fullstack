@@ -93,7 +93,7 @@ const GoalForm: React.FC = () => {
   if (selectedDates.startDate) {
     startDateFooter = (
       <p className={styles.start_date}>
-        Start Date: {format(selectedDates.startDate, "PP")}.
+        Start Date: <span>{format(selectedDates.startDate, "PP")}</span> .
       </p>
     );
   }
@@ -102,7 +102,7 @@ const GoalForm: React.FC = () => {
   if (selectedDates.endDate) {
     endDateFooter = (
       <p className={styles.end_date}>
-        End Date: {format(selectedDates.endDate, "PP")}.
+        End Date: <span> {format(selectedDates.endDate, "PP")}</span>.
       </p>
     );
   }
@@ -140,7 +140,6 @@ const GoalForm: React.FC = () => {
     setText("");
     setSelectedDates(initialCalendarState);
     setErrors(initialErrorsState);
-    console.log(VIEW_MODE);
   };
 
   const handleCancelEditGoal = () => {

@@ -44,16 +44,26 @@
   box-shadow: 0 0 12.5px 3px #a0daa93d;
 }
 
+.start_date span {
+  color: green;
+  font-weight: 600;
+}
+
 .start_date:hover {
   -webkit-box-shadow: 0 0 12.5px 3px #a0daa980;
   -moz-box-shadow: 0 0 12.5px 3px #a0daa980;
   box-shadow: 0 0 12.5px 3px #a0daa980;
   transition: ease-in-out 0.5s;
 }
-.calendar .end_date {
+.end_date {
   -webkit-box-shadow: 0 0 12.5px 3px #dbb3b93d;
   -moz-box-shadow: 0 0 12.5px 3px #dbb3b93d;
   box-shadow: 0 0 12.5px 3px #dbb3b93d;
+}
+
+.end_date span {
+  color: red;
+  font-weight: 600;
 }
 
 .end_date:hover {
