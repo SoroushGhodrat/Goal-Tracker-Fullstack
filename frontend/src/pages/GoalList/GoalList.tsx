@@ -83,6 +83,7 @@ const GoalList = () => {
       </section>
 
       <section>
+        {/* In Progress Goals Tab*/}
         <div className={tabstyles.tabs_container}>
           <div className={tabstyles.tab}>
             <label htmlFor="tab_1">In Progress Goals</label>
@@ -92,7 +93,6 @@ const GoalList = () => {
               type="radio"
               defaultChecked={true}
             />
-            {/* In Progress Goals */}
             <div>
               {inProgressGoals.length > 0 ? (
                 inProgressGoals.map((goal: Goal) => {
@@ -102,58 +102,11 @@ const GoalList = () => {
                 <p>You don't have any in progress goals yet!</p>
               )}
             </div>
-            {/* <div>
-              {inProgressGoals.length > 0 ? (
-                goals.map((goal: Goal) => {
-                  if (goal.selectedDates) {
-                    const { _today, _endDate, _isGoalFinishToday } =
-                      dayCalculator(
-                        goal.selectedDates.startDate,
-                        goal.selectedDates.endDate,
-                      );
-
-                    if (
-                      new Date(_endDate) > new Date(_today) ||
-                      _isGoalFinishToday
-                    ) {
-                      return <GoalItem key={goal._id} goal={goal} />;
-                    }
-                  }
-                  return null;
-                })
-              ) : (
-                <p>You don't have any in progress goals yet!</p>
-              )}
-            </div> */}
           </div>
-
-          {/* <div className={tabstyles.tab}>
-            <label htmlFor="tab_2">Finished Goals</label>
-            <input id="tab_2" name="tabs-one" type="radio" />
-            <div>
-              {finishedGoals.length > 0 ? (
-                goals.map((goal: Goal) => {
-                  if (goal.selectedDates) {
-                    const { _isGoalExpired, _hoursLeft } = dayCalculator(
-                      goal.selectedDates.startDate,
-                      goal.selectedDates.endDate,
-                    );
-
-                    if (!_isGoalExpired && _hoursLeft ) {
-                      return <GoalItem key={goal._id} goal={goal} />;
-                    }
-                  }
-                  return null;
-                })
-              ) : (
-                <p>You don't have any finished goals yet!</p>
-              )}
-            </div> */}
-
+          {/* Finished Goals Tab*/}
           <div className={tabstyles.tab}>
             <label htmlFor="tab_2">Finished Goals</label>
             <input id="tab_2" name="tabs-one" type="radio" />
-            {/* Finished Goals */}
             <div>
               {finishedGoals.length > 0 ? (
                 finishedGoals.map((goal: Goal) => {
@@ -164,7 +117,7 @@ const GoalList = () => {
               )}
             </div>
           </div>
-
+          {/* Chart Tab */}
           <div className={tabstyles.tab}>
             <label htmlFor="tab_3">Goals Chart</label>
             <input id="tab_3" name="tabs-one" type="radio" />

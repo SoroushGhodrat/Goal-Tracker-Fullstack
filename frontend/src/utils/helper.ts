@@ -1,6 +1,5 @@
 export const dateStandardizer = (Selecteddate: Date) => {
   const date = new Date(Selecteddate);
-  // console.log('selected date: ', date)
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
   const monthString = month < 10 ? `0${month}` : `${month}`;

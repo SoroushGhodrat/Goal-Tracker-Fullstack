@@ -99,11 +99,12 @@ const GoalItem = ({ goal }: GoalItemProps) => {
       </div>
       <hr />
 
+      {/* Goal description part */}
       <div
         dangerouslySetInnerHTML={{ __html: text || "" }}
         className={styles.description}
       />
-
+      {/* Goal date information */}
       <section className={styles.duration}>
         <p>Start at: {_startDate}</p>
         <p>Due date: {_endDate}</p>
