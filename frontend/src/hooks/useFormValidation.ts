@@ -64,8 +64,9 @@ const useFormValidation = (text: string, selectedDates: SelectedDates) => {
     }
 
     if (
-      selectedDates?.startDate &&
-      selectedDates?.endDate < selectedDates?.startDate
+      selectedDates?.endDate < selectedDates?.startDate! ||
+      selectedDates?.endDate.getFullYear() <
+        selectedDates?.startDate!.getFullYear()
     ) {
       setErrors((prevErrors) => ({
         ...prevErrors,

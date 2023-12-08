@@ -43,8 +43,8 @@ export const dayCalculator = (startDate: Date, endDate: Date) => {
     _startDate: _startDate,
     _endDate: _endDate,
     _remainDay: _remainDay,
+    _hoursLeft: _hoursLeft,
     _isGoalExpired: _isGoalExpired,
     _isGoalFinishToday: _isGoalFinishToday,
-    _hoursLeft: _hoursLeft,
   };
 };

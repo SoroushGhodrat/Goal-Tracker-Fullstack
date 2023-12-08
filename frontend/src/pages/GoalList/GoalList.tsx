@@ -22,6 +22,8 @@ const GoalList = () => {
   // );
   const goals = useSelector((state: any) => state.goals.goals);
 
+  console.log(goals);
+
   useEffect(() => {
     if (goals.isError) {
       console.log(goals.message);
@@ -42,14 +44,33 @@ const GoalList = () => {
     return <Spinner />;
   }
 
-  const inProgressGoals = goals.filter(
-    (goal: Goal) =>
-      goal.selectedDates && new Date(goal.selectedDates.endDate) > new Date(),
-  );
+  const inProgressGoals = goals.filter((goal: Goal) => {
+    let today = new Date();
+    let endDate = new Date(goal.selectedDates!.endDate);
+    let remainingHours = 0;
+
+    // Check if the end date is today
+    if (
+      (endDate.getDate() === today.getDate() &&
+        endDate.getMonth() === today.getMonth() &&
+        endDate.getFullYear() === today.getFullYear()) ||
+      today.getTime() <= endDate.getTime()
+    ) {
+      // Calculate remaining hours
+      remainingHours = today.getHours() - endDate.getHours();
+
+      if (remainingHours > 0) {
+        return true;
+      }
+    }
+    return false;
+  });
 
   const finishedGoals = goals.filter(
     (goal: Goal) =>
-      goal.selectedDates && new Date(goal.selectedDates.endDate) < new Date(),
+      goal.selectedDates &&
+      new Date(goal.selectedDates.endDate) < new Date() &&
+      !inProgressGoals.includes(goal),
   );
 
   return (
@@ -62,6 +83,7 @@ const GoalList = () => {
       </section>
 
       <section>
+        {/* In Progress Goals Tab*/}
         <div className={tabstyles.tabs_container}>
           <div className={tabstyles.tab}>
             <label htmlFor="tab_1">In Progress Goals</label>
@@ -73,53 +95,29 @@ const GoalList = () => {
             />
             <div>
               {inProgressGoals.length > 0 ? (
-                goals.map((goal: Goal) => {
-                  if (goal.selectedDates) {
-                    const { _today, _endDate, _isGoalFinishToday } =
-                      dayCalculator(
-                        goal.selectedDates.startDate,
-                        goal.selectedDates.endDate,
-                      );
-
-                    if (
-                      new Date(_endDate) > new Date(_today) ||
-                      _isGoalFinishToday
-                    ) {
-                      return <GoalItem key={goal._id} goal={goal} />;
-                    }
-                  }
-                  return null;
+                inProgressGoals.map((goal: Goal) => {
+                  return <GoalItem key={goal._id} goal={goal} />;
                 })
               ) : (
                 <p>You don't have any in progress goals yet!</p>
               )}
             </div>
           </div>
-
+          {/* Finished Goals Tab*/}
           <div className={tabstyles.tab}>
             <label htmlFor="tab_2">Finished Goals</label>
             <input id="tab_2" name="tabs-one" type="radio" />
             <div>
               {finishedGoals.length > 0 ? (
-                goals.map((goal: Goal) => {
-                  if (goal.selectedDates) {
-                    const { _isGoalExpired, _hoursLeft } = dayCalculator(
-                      goal.selectedDates.startDate,
-                      goal.selectedDates.endDate,
-                    );
-
-                    if (!_isGoalExpired && !_hoursLeft) {
-                      return <GoalItem key={goal._id} goal={goal} />;
-                    }
-                  }
-                  return null;
+                finishedGoals.map((goal: Goal) => {
+                  return <GoalItem key={goal._id} goal={goal} />;
                 })
               ) : (
                 <p>You don't have any finished goals yet!</p>
               )}
             </div>
           </div>
-
+          {/* Chart Tab */}
           <div className={tabstyles.tab}>
             <label htmlFor="tab_3">Goals Chart</label>
             <input id="tab_3" name="tabs-one" type="radio" />

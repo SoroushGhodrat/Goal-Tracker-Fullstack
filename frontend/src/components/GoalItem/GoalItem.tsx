@@ -99,11 +99,12 @@ const GoalItem = ({ goal }: GoalItemProps) => {
       </div>
       <hr />
 
+      {/* Goal description part */}
       <div
         dangerouslySetInnerHTML={{ __html: text || "" }}
         className={styles.description}
       />
-
+      {/* Goal date information */}
       <section className={styles.duration}>
         <p>Start at: {_startDate}</p>
         <p>Due date: {_endDate}</p>
@@ -112,7 +113,11 @@ const GoalItem = ({ goal }: GoalItemProps) => {
             {_remainDay} day{_remainDay > 1 ? "s" : ""} left
           </p>
         ) : null}
-        {_isGoalFinishToday && <p>{_hoursLeft} hours left</p>}
+        {_isGoalFinishToday && (
+          <p>
+            {_hoursLeft} hour{_hoursLeft! > 1 ? "s" : ""} left
+          </p>
+        )}
       </section>
     </div>
   );
