@@ -45,6 +45,7 @@ button.outlined:hover {
 
 button.text {
   background: transparent;
+  border: none;
   color: var(--black);
 }
 

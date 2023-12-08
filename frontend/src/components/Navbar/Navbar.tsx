@@ -5,6 +5,7 @@ import { logout, reset } from "../../features/auth/authSlice";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import styles from "./navbar.module.css";
 import Button from "../UI/Button/Button";
+import DropdownButton from "../DropdownButton/DropdownButton";
 
 const Navbar = () => {
   const dispatch = useDispatch<ThunkDispatch<any, any, AnyAction>>();
@@ -30,15 +31,21 @@ const Navbar = () => {
             </li>
 
             <li>
-              <Button
-                variant="contained"
-                size="medium"
-                type="button"
-                onClick={onLogout}
-              >
-                <FaSignOutAlt />
-                &nbsp;&nbsp;LOGOUT
-              </Button>
+              <DropdownButton buttonTitle="hi guest!">
+                <li>Profile</li>
+                <li>setting</li>
+                <li>
+                  <Button
+                    variant="text"
+                    size="medium"
+                    type="button"
+                    onClick={onLogout}
+                  >
+                    <FaSignOutAlt />
+                    &nbsp;&nbsp;LOGOUT
+                  </Button>
+                </li>
+              </DropdownButton>
             </li>
           </>
         ) : (
