@@ -60,7 +60,7 @@ const Login = () => {
 
     const userData: any = {
       email: email,
-      password: password,
+      password: password.trim(),
     };
 
     dispatch(login(userData));
