@@ -22,6 +22,8 @@ const GoalList = () => {
   // );
   const goals = useSelector((state: any) => state.goals.goals);
 
+  console.log(goals);
+
   useEffect(() => {
     if (goals.isError) {
       console.log(goals.message);
@@ -42,14 +44,33 @@ const GoalList = () => {
     return <Spinner />;
   }
 
-  const inProgressGoals = goals.filter(
-    (goal: Goal) =>
-      goal.selectedDates && new Date(goal.selectedDates.endDate) > new Date(),
-  );
+  const inProgressGoals = goals.filter((goal: Goal) => {
+    let today = new Date();
+    let endDate = new Date(goal.selectedDates!.endDate);
+    let remainingHours = 0;
+
+    // Check if the end date is today
+    if (
+      (endDate.getDate() === today.getDate() &&
+        endDate.getMonth() === today.getMonth() &&
+        endDate.getFullYear() === today.getFullYear()) ||
+      today.getTime() <= endDate.getTime()
+    ) {
+      // Calculate remaining hours
+      remainingHours = today.getHours() - endDate.getHours();
+
+      if (remainingHours > 0) {
+        return true;
+      }
+    }
+    return false;
+  });
 
   const finishedGoals = goals.filter(
     (goal: Goal) =>
-      goal.selectedDates && new Date(goal.selectedDates.endDate) < new Date(),
+      goal.selectedDates &&
+      new Date(goal.selectedDates.endDate) < new Date() &&
+      !inProgressGoals.includes(goal),
   );
 
   return (
@@ -71,7 +92,17 @@ const GoalList = () => {
               type="radio"
               defaultChecked={true}
             />
+            {/* In Progress Goals */}
             <div>
+              {inProgressGoals.length > 0 ? (
+                inProgressGoals.map((goal: Goal) => {
+                  return <GoalItem key={goal._id} goal={goal} />;
+                })
+              ) : (
+                <p>You don't have any in progress goals yet!</p>
+              )}
+            </div>
+            {/* <div>
               {inProgressGoals.length > 0 ? (
                 goals.map((goal: Goal) => {
                   if (goal.selectedDates) {
@@ -93,10 +124,10 @@ const GoalList = () => {
               ) : (
                 <p>You don't have any in progress goals yet!</p>
               )}
-            </div>
+            </div> */}
           </div>
 
-          <div className={tabstyles.tab}>
+          {/* <div className={tabstyles.tab}>
             <label htmlFor="tab_2">Finished Goals</label>
             <input id="tab_2" name="tabs-one" type="radio" />
             <div>
@@ -108,11 +139,25 @@ const GoalList = () => {
                       goal.selectedDates.endDate,
                     );
 
-                    if (!_isGoalExpired && !_hoursLeft) {
+                    if (!_isGoalExpired && _hoursLeft ) {
                       return <GoalItem key={goal._id} goal={goal} />;
                     }
                   }
                   return null;
+                })
+              ) : (
+                <p>You don't have any finished goals yet!</p>
+              )}
+            </div> */}
+
+          <div className={tabstyles.tab}>
+            <label htmlFor="tab_2">Finished Goals</label>
+            <input id="tab_2" name="tabs-one" type="radio" />
+            {/* Finished Goals */}
+            <div>
+              {finishedGoals.length > 0 ? (
+                finishedGoals.map((goal: Goal) => {
+                  return <GoalItem key={goal._id} goal={goal} />;
                 })
               ) : (
                 <p>You don't have any finished goals yet!</p>

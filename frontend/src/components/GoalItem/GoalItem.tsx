@@ -112,7 +112,11 @@ const GoalItem = ({ goal }: GoalItemProps) => {
             {_remainDay} day{_remainDay > 1 ? "s" : ""} left
           </p>
         ) : null}
-        {_isGoalFinishToday && <p>{_hoursLeft} hours left</p>}
+        {_isGoalFinishToday && (
+          <p>
+            {_hoursLeft} hour{_hoursLeft! > 1 ? "s" : ""} left
+          </p>
+        )}
       </section>
     </div>
   );

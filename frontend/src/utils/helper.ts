@@ -1,5 +1,6 @@
 export const dateStandardizer = (Selecteddate: Date) => {
   const date = new Date(Selecteddate);
+  // console.log('selected date: ', date)
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
   const monthString = month < 10 ? `0${month}` : `${month}`;
@@ -43,8 +44,8 @@ export const dayCalculator = (startDate: Date, endDate: Date) => {
     _startDate: _startDate,
     _endDate: _endDate,
     _remainDay: _remainDay,
+    _hoursLeft: _hoursLeft,
     _isGoalExpired: _isGoalExpired,
     _isGoalFinishToday: _isGoalFinishToday,
-    _hoursLeft: _hoursLeft,
   };
 };
