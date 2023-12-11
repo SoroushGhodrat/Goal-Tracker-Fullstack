@@ -12,6 +12,7 @@ import { toast } from "react-toastify";
 
 interface GoalItemProps {
   goal: Goal;
+  status: "in-progress" | "finished";
 }
 
 type InputDate = {
@@ -19,7 +20,7 @@ type InputDate = {
   endDate: Date;
 };
 
-const GoalItem = ({ goal }: GoalItemProps) => {
+const GoalItem = ({ goal, status }: GoalItemProps) => {
   const dispatch: AppDispatch = useDispatch();
 
   const { createdAt, _id, text, selectedDates } = goal;
@@ -106,17 +107,26 @@ const GoalItem = ({ goal }: GoalItemProps) => {
       />
       {/* Goal date information */}
       <section className={styles.duration}>
-        <p>Start at: {_startDate}</p>
-        <p>Due date: {_endDate}</p>
-        {_isGoalExpired ? (
-          <p>
-            {_remainDay} day{_remainDay > 1 ? "s" : ""} left
-          </p>
-        ) : null}
-        {_isGoalFinishToday && (
-          <p>
-            {_hoursLeft} hour{_hoursLeft! > 1 ? "s" : ""} left
-          </p>
+        {status === "in-progress" ? (
+          <>
+            <p>Start at: {_startDate}</p>
+            <p>Due date: {_endDate}</p>
+            {_isGoalExpired ? (
+              <p>
+                {_remainDay} day{_remainDay > 1 ? "s" : ""} left
+              </p>
+            ) : null}
+            {_isGoalFinishToday && (
+              <p>
+                {_hoursLeft} hour{_hoursLeft! > 1 ? "s" : ""} left
+              </p>
+            )}
+          </>
+        ) : (
+          <>
+            <p>Start at: {_startDate}</p>
+            <p>Due date: {_endDate}</p>
+          </>
         )}
       </section>
     </div>
