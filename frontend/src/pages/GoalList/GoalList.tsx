@@ -22,8 +22,6 @@ const GoalList = () => {
   // );
   const goals = useSelector((state: any) => state.goals.goals);
 
-  console.log(goals);
-
   useEffect(() => {
     if (goals.isError) {
       console.log(goals.message);

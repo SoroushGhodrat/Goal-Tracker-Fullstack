@@ -45,7 +45,7 @@ const Navbar = () => {
         <div>
           <ul>
             <li>
-              <DropdownButton buttonTitle="hi guest!">
+              <DropdownButton buttonTitle={`Hi ${user.name}!`}>
                 <li>
                   <Button
                     title="Profile"
@@ -56,7 +56,6 @@ const Navbar = () => {
                   />
                 </li>
                 <li>
-                  {" "}
                   <Button
                     title="Setting"
                     size="medium"
