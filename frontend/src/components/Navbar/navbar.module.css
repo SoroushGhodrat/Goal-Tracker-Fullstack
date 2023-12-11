@@ -1,7 +1,6 @@
 .header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   padding: 20px 15px;
   border-bottom: 1px solid #e6e6e6;
   margin-bottom: 60px;
@@ -28,5 +27,16 @@
 }
 
 .header ul li a svg {
+  margin-right: 5px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+}
+
+.logo img {
+  width: 25px;
   margin-right: 5px;
 }

@@ -6,6 +6,7 @@ import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import styles from "./navbar.module.css";
 import Button from "../UI/Button/Button";
 import DropdownButton from "../DropdownButton/DropdownButton";
+import Logo from "../../assets/Logo.png";
 
 const Navbar = () => {
   const dispatch = useDispatch<ThunkDispatch<any, any, AnyAction>>();
@@ -18,18 +19,31 @@ const Navbar = () => {
 
   return (
     <header className={styles.header}>
-      <div className={styles.logo}>GOAL TRACKER</div>
+      <div className={styles.logo}>
+        <img src={Logo} alt="logo" />
+        GOAL TRACKER
+      </div>
 
-      <ul>
-        {user ? (
+      <div>
+        {user && (
           <>
-            <li>
-              <Link to="/goals-list">GOAL LIST</Link>
-            </li>
-            <li>
-              <Link to="/new-goal-form">GREATE A NEW GOAL</Link>
-            </li>
+            <div>
+              <ul>
+                <li>
+                  <Link to="/goals-list">GOAL LIST</Link>
+                </li>
+                <li>
+                  <Link to="/new-goal-form">GREATE A NEW GOAL</Link>
+                </li>
+              </ul>
+            </div>
+          </>
+        )}
+      </div>
 
+      {user && (
+        <div>
+          <ul>
             <li>
               <DropdownButton buttonTitle="hi guest!">
                 <li>Profile</li>
@@ -47,22 +61,25 @@ const Navbar = () => {
                 </li>
               </DropdownButton>
             </li>
-          </>
-        ) : (
-          <>
-            <li>
-              <Link to="/login">
-                <FaSignInAlt /> LOGIN
-              </Link>
-            </li>
-            <li>
-              <Link to="/register">
-                <FaUser /> REGISTER
-              </Link>
-            </li>
-          </>
-        )}
-      </ul>
+          </ul>
+        </div>
+      )}
+
+      {!user && (
+        <ul>
+          <li>
+            <Link to="/login">
+              <FaSignInAlt /> LOGIN
+            </Link>
+          </li>
+          <li>
+            <Link to="/register">
+              <FaUser /> REGISTER
+            </Link>
+          </li>
+        </ul>
+      )}
+
     </header>
   );
 };
