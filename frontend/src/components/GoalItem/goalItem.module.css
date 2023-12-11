@@ -1,5 +1,5 @@
 .goal {
-  background-color: #f4f4f4;
+  background-color: var(--pickled-bluewood-100);
   border-radius: 6px;
   margin: 10px 0 20px 0;
   padding: 20px;

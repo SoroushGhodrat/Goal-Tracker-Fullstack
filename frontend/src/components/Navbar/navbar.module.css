@@ -14,13 +14,23 @@
 
 .header ul li {
   margin-left: 20px;
-  color: #34495e;
+  color: var(--pickled-bluewood-500);
+  transition: all 0.3s ease-in-out;
+}
+
+.header ul li:hover {
+  color: var(--pickled-bluewood-700);
 }
 
 .header ul li a {
   position: relative;
   display: flex;
   align-items: center;
+  color: var(--pickled-bluewood-500);
+}
+
+.header ul li a:hover {
+  color: var(--pickled-bluewood-700);
 }
 
 .header ul li a::after {
@@ -30,7 +40,7 @@
   left: 50%;
   width: 0;
   height: 2px;
-  background: #2c3e50;
+  background: var(--pickled-bluewood-700);
   transition: all 0.3s ease-in-out;
   transform: translateX(-50%);
 }
