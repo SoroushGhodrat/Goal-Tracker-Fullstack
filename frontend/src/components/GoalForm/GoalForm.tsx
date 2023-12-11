@@ -112,7 +112,6 @@ const GoalForm: React.FC = () => {
   };
 
   const handleStartDateSelect = (date: InputDate) => {
-    console.log(date);
     if (date) {
       setSelectedDates({ ...selectedDates, startDate: date });
     }
