@@ -96,7 +96,7 @@ const GoalList = () => {
             <div>
               {inProgressGoals.length > 0 ? (
                 inProgressGoals.map((goal: Goal) => {
-                  return <GoalItem key={goal._id} goal={goal} />;
+                  return <GoalItem key={goal._id} goal={goal} status={'in-progress'}/>;
                 })
               ) : (
                 <p>You don't have any in progress goals yet!</p>
@@ -110,7 +110,7 @@ const GoalList = () => {
             <div>
               {finishedGoals.length > 0 ? (
                 finishedGoals.map((goal: Goal) => {
-                  return <GoalItem key={goal._id} goal={goal} />;
+                  return <GoalItem key={goal._id} goal={goal} status={'finished'}/>;
                 })
               ) : (
                 <p>You don't have any finished goals yet!</p>
