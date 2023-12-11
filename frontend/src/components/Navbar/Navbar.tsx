@@ -50,13 +50,14 @@ const Navbar = () => {
                 <li>setting</li>
                 <li>
                   <Button
-                    variant="text"
+                    title="Logout"
+                    variant="button-text"
                     size="medium"
                     type="button"
                     onClick={onLogout}
                   >
                     <FaSignOutAlt />
-                    &nbsp;&nbsp;LOGOUT
+                    &nbsp;&nbsp;
                   </Button>
                 </li>
               </DropdownButton>
@@ -79,7 +80,6 @@ const Navbar = () => {
           </li>
         </ul>
       )}
-
     </header>
   );
 };

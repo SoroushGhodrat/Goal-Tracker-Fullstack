@@ -9,6 +9,7 @@
   text-align: center;
   margin: 0 auto;
   width: 800px;
+  text-transform: capitalize;
 }
 
 .heading p {
@@ -85,36 +86,6 @@
   justify-content: space-evenly;
   align-items: center;
   margin-bottom: 20px;
-}
-
-.btn {
-  padding: 10px 20px;
-  border: 1px solid #000;
-  border-radius: 5px;
-  background: #000;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  text-align: center;
-  appearance: button;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.btn_reverse {
-  background: #fff;
-  color: #000;
-}
-
-.btn_block {
-  width: 100%;
-  margin-bottom: 20px;
-}
-
-.btn:hover {
-  transform: scale(0.98);
 }
 
 .form {
