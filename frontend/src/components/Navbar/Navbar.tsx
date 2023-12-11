@@ -46,8 +46,25 @@ const Navbar = () => {
           <ul>
             <li>
               <DropdownButton buttonTitle="hi guest!">
-                <li>Profile</li>
-                <li>setting</li>
+                <li>
+                  <Button
+                    title="Profile"
+                    size="medium"
+                    type="button"
+                    variant="button-text"
+                    disabled
+                  />
+                </li>
+                <li>
+                  {" "}
+                  <Button
+                    title="Setting"
+                    size="medium"
+                    type="button"
+                    variant="button-text"
+                    disabled
+                  />
+                </li>
                 <li>
                   <Button
                     title="Logout"
