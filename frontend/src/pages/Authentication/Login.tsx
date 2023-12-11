@@ -131,9 +131,12 @@ const Login = () => {
             </div>
           </div>
           <div className={styles.form_group}>
-            <Button type="submit" variant="contained" size="large">
-              Login
-            </Button>
+            <Button
+              title="Login"
+              type="submit"
+              variant="button-solid"
+              size="large"
+            />
           </div>
         </form>
       </section>

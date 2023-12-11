@@ -1,14 +1,23 @@
 .dropdown_container .btn {
-  border-radius: 5px;
+  background-color: var(--pickled-bluewood-500);
+  border: 1px solid var(--pickled-bluewood-500);
+  color: var(--white);
+  transition: all 0.3s ease-in-out;
+  border-radius: 2px;
   text-transform: capitalize;
   font-weight: 400;
   letter-spacing: 0.5px;
   cursor: pointer;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 8px;
-  background-color: #34495e;
-  color: #ffffff;
   font-size: 15px;
+}
+
+.dropdown_container .btn:hover {
+  background-color: var(--pickled-bluewood-600);
 }
 
 .dropdown_list_box {

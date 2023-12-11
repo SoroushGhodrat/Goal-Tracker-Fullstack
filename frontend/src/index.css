@@ -1,5 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
 
+:root {
+  --pickled-bluewood-50: #f5f7fa;
+  --pickled-bluewood-100: #eaeef4;
+  --pickled-bluewood-200: #d1dce6;
+  --pickled-bluewood-300: #a8bed1;
+  --pickled-bluewood-400: #799bb7;
+  --pickled-bluewood-500: #597e9f;
+  --pickled-bluewood-600: #456684;
+  --pickled-bluewood-700: #39516b;
+  --pickled-bluewood-800: #34495e;
+  --pickled-bluewood-900: #2d3c4d;
+  --pickled-bluewood-950: #1e2833;
+  --white: #fff;
+  --black: #000;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -18,6 +34,7 @@ a {
 
 p {
   line-height: 1.7;
+  color: var(--pickled-bluewood-700);
 }
 
 ul {
@@ -33,6 +50,7 @@ h2,
 h3 {
   font-weight: 600;
   margin-bottom: 10px;
+  color: var(--pickled-bluewood-700);
 }
 
 .container {

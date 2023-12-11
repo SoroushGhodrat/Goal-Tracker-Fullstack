@@ -219,37 +219,37 @@ const GoalForm: React.FC = () => {
 
         <div className={styles.button_group}>
           <Button
-            variant="outlined"
+            title="Reset"
+            variant="button-outline"
             size="medium"
             type="button"
             onClick={handleResetForm}
-          >
-            Reset
-          </Button>
+          />
 
           {VIEW_MODE === "edit" ? (
             <>
               <Button
-                variant="outlined"
+                title="Cancel"
+                variant="button-outline"
                 size="medium"
                 type="button"
                 onClick={handleCancelEditGoal}
-              >
-                cancle and close
-              </Button>
+              />
               <Button
-                variant="contained"
+                title="Update Goal"
+                variant="button-solid"
                 size="medium"
                 type="button"
                 onClick={handleUpdateGoal}
-              >
-                Update Goal
-              </Button>
+              />
             </>
           ) : (
-            <Button type="submit" variant="contained" size="medium">
-              Add Goal
-            </Button>
+            <Button
+              title="Add Goal"
+              type="submit"
+              variant="button-solid"
+              size="medium"
+            />
           )}
         </div>
       </form>

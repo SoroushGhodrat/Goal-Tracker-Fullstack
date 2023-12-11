@@ -18,12 +18,27 @@
 }
 
 .header ul li a {
+  position: relative;
   display: flex;
   align-items: center;
 }
 
-.header ul li a:hover {
-  border-bottom: 2px solid #2c3e50;
+.header ul li a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #2c3e50;
+  transition: all 0.3s ease-in-out;
+  transform: translateX(-50%);
+}
+
+.header ul li a:hover::after {
+  width: 100%;
+  left: 0;
+  transform: translateX(0%);
 }
 
 .header ul li a svg {
