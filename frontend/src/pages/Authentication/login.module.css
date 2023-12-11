@@ -6,10 +6,6 @@
   text-align: center;
 }
 
-.heading p {
-  color: #828282;
-}
-
 .form {
   display: flex;
   flex-direction: row;

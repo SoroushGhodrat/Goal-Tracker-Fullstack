@@ -19,7 +19,7 @@ const PieChart: React.FC<PieChartProps> = ({
   const options = {
     // title: "My goals status",
     legend: { position: "bottom" },
-    backgroundColor: "#f5f5f5",
+    backgroundColor: "#eaeef4",
     pieHole: 0.4,
   };
 
