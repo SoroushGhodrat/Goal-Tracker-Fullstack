@@ -49,12 +49,12 @@ select:focus {
 .tabs_container [class^="tab"] [type="radio"]:focus,
 .tabs_container [class*=" tab"] [type="radio"]:hover,
 .tabs_container [class*=" tab"] [type="radio"]:focus {
-  border-bottom: 1px solid #fd264f;
+  border-bottom: 2px solid var(--pickled-bluewood-200);
 }
 
 .tabs_container [class^="tab"] [type="radio"]:checked,
 .tabs_container [class*=" tab"] [type="radio"]:checked {
-  border-bottom: 2px solid #fd264f;
+  border-bottom: 2px solid var(--pickled-bluewood-700);
 }
 
 .tabs_container [class^="tab"] [type="radio"]:checked + div,
@@ -101,4 +101,15 @@ select:focus {
 
 .tabs_container .tab:nth-child(3) [type="radio"]:checked + div {
   margin-left: -200%;
+}
+
+@media only screen and (max-width: 600px) {
+  .tabs_container {
+    width: 100%;
+  }
+
+  .tabs_container .tab label {
+    font-size: 0.8rem;
+    font-weight: bold;
+  }
 }

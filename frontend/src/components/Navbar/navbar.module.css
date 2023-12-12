@@ -118,11 +118,7 @@ nav .nav_links li a:hover::after {
   width: 60%;
   height: 100vh;
   padding: 20% 0;
-  background: linear-gradient(
-    to bottom,
-    var(--pickled-bluewood-300) 0%,
-    var(--pickled-bluewood-700) 100%
-  );
+  backdrop-filter: blur(20px);
   transition: all 0.5s ease-in;
   z-index: 2;
 }
@@ -149,9 +145,9 @@ nav .nav_links li a:hover::after {
 
 .menubar ul li a {
   text-decoration: none;
-  color: var(--pickled-bluewood-50);
-  font-size: 95%;
-  font-weight: 400;
+  color: var(--pickled-bluewood-900);
+  font-size: 0.9rem;
+  font-weight: 700;
   padding: 4px 8px;
   border-radius: 5px;
   position: relative;

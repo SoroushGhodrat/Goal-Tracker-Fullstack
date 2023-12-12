@@ -6,10 +6,6 @@
   text-align: center;
 }
 
-.heading p {
-  color: #2c3e50;
-}
-
 .img_banner {
   display: flex;
   flex-direction: row;
@@ -59,5 +55,10 @@
 
   .heading p {
     font-size: 1.5rem;
+    padding-top: 20px;
+  }
+
+  .img_banner img {
+    width: 100%;
   }
 }
