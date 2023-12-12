@@ -123,3 +123,19 @@
   display: block;
   margin: 0 0 5px 3px;
 }
+
+@media only screen and (max-width: 600px) {
+  .heading {
+    margin-top: 20px;
+  }
+  .heading p {
+    font-size: 1.5rem;
+  }
+  .calendar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+}
