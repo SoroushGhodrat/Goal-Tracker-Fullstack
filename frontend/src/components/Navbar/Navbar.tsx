@@ -126,10 +126,22 @@ const Navbar = () => {
               <Link to="/new-goal-form">GREATE A NEW GOAL</Link>
             </li>
             <li>
-              <Link to="/profile">Profile</Link>
+              <Link
+                to="/profile"
+                className={styles.disabled}
+                onClick={(e) => e.preventDefault()}
+              >
+                Profile
+              </Link>
             </li>
             <li>
-              <Link to="/profile">Setting</Link>
+              <Link
+                to="/setting"
+                className={styles.disabled}
+                onClick={(e) => e.preventDefault()}
+              >
+                Setting
+              </Link>
             </li>
             <li>
               <Button
