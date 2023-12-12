@@ -75,7 +75,7 @@ const Login = () => {
   };
 
   return (
-    <>
+    <main>
       <section className={styles.heading}>
         <h1>
           <FaSignInAlt /> Login
@@ -130,6 +130,7 @@ const Login = () => {
               </span>
             </div>
           </div>
+          <br />
           <div className={styles.form_group}>
             <Button
               title="Login"
@@ -140,7 +141,7 @@ const Login = () => {
           </div>
         </form>
       </section>
-    </>
+    </main>
   );
 };
 

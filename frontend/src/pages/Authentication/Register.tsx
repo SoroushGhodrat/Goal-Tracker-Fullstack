@@ -90,7 +90,7 @@ const Register = () => {
   };
 
   return (
-    <>
+    <main>
       <section className={styles.heading}>
         <h1>
           <FaUser /> Register
@@ -193,7 +193,7 @@ const Register = () => {
           <img src={signupImage} alt="Goal" />
         </div>
       </section>
-    </>
+    </main>
   );
 };
 
