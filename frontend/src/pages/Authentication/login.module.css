@@ -1,9 +1,14 @@
 .heading {
   font-size: 2rem;
   font-weight: 700;
-  margin-bottom: 50px;
+  margin: 50px 0 10px 0;
   padding: 0 20px;
   text-align: center;
+}
+
+.heading p {
+  font-size: 2rem;
+  font-weight: 400;
 }
 
 .form {
@@ -46,11 +51,16 @@
   margin: 0 0 5px 3px;
 }
 
+.login_image {
+  display: flex;
+  margin: 0 auto;
+}
 .login_image img {
   width: 500px;
 }
 .signup_image {
   display: flex;
+  margin: 0 auto;
 }
 
 .signup_image img {
@@ -79,16 +89,28 @@
   cursor: pointer;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 870px) {
   .form {
-    width: 90%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
   }
 
   .heading h1 {
+    margin-top: 20px;
     font-size: 2rem;
   }
 
   .heading p {
-    font-size: 1.5rem;
+    font-size: 1rem;
+  }
+
+  .form .login_image img {
+    margin: 0 auto;
+    width: 300px;
+  }
+
+  .form .signup_image {
+    display: none;
   }
 }
