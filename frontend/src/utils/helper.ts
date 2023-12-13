@@ -1,3 +1,14 @@
+export const hoursIn24Format = () => {
+  const today = new Date();
+  const currentHours = today.getHours();
+  const currentMinutes = today.getMinutes();
+
+  const currentTime = `${
+    currentHours < 10 ? "0" + currentHours : currentHours
+  }:${currentMinutes < 10 ? "0" + currentMinutes : currentMinutes}`;
+  return currentTime;
+};
+
 export const dateStandardizer = (Selecteddate: Date) => {
   const date = new Date(Selecteddate);
   const year = date.getFullYear();
@@ -10,11 +21,11 @@ export const dateStandardizer = (Selecteddate: Date) => {
   return `${monthString}-${dayString}-${year}`;
 };
 
-export const goalDuration = (startDate: Date, endDate: Date) => {
-  const start = new Date(startDate);
+export const goalRemainDay = (endDate: Date) => {
+  const today = new Date();
   const end = new Date(endDate);
-  const duration = end.getTime() - start.getTime();
-  const days = Math.round(duration / (1000 * 3600 * 24));
+  const duration = end.getTime() - today.getTime();
+  const days = Math.ceil(duration / (1000 * 3600 * 24));
   return days;
 };
 
@@ -22,7 +33,7 @@ export const dayCalculator = (startDate: Date, endDate: Date) => {
   const _today = new Date();
   const _startDate = dateStandardizer(startDate);
   const _endDate = dateStandardizer(endDate);
-  const _remainDay = goalDuration(startDate, endDate);
+  const _remainDay = goalRemainDay(endDate);
   const _isGoalExpired = new Date(endDate) > _today;
   const _isGoalFinishToday = _remainDay === 0 ? true : false;
 
