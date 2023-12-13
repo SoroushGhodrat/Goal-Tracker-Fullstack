@@ -9,6 +9,7 @@ import Tooltip from "../UI/Tooltip/Tooltip";
 import { dayCalculator } from "../../utils/helper";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import ProgressBar from "../UI/ProgressBar/ProgressBar";
 
 interface GoalItemProps {
   goal: Goal;
@@ -106,21 +107,12 @@ const GoalItem = ({ goal, status }: GoalItemProps) => {
         className={styles.description}
       />
       {/* Goal date information */}
+
       <section className={styles.duration}>
         {status === "in-progress" ? (
           <>
             <p>Start at: {_startDate}</p>
             <p>Due date: {_endDate}</p>
-            {_isGoalExpired ? (
-              <p>
-                {_remainDay} day{_remainDay > 1 ? "s" : ""} left
-              </p>
-            ) : null}
-            {_isGoalFinishToday && (
-              <p>
-                {_hoursLeft} hour{_hoursLeft! > 1 ? "s" : ""} left
-              </p>
-            )}
           </>
         ) : (
           <>
@@ -129,6 +121,16 @@ const GoalItem = ({ goal, status }: GoalItemProps) => {
           </>
         )}
       </section>
+
+      {
+        <section>
+          {status === "in-progress" && (
+            <ProgressBar
+              goalStatus={[_startDate, _endDate, _remainDay, _hoursLeft]}
+            />
+          )}
+        </section>
+      }
     </div>
   );
 };
