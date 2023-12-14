@@ -28,6 +28,7 @@ const GoalItem = ({ goal, status }: GoalItemProps) => {
   const { startDate, endDate } = selectedDates as InputDate;
 
   const {
+    _today,
     _startDate,
     _endDate,
     _remainDay,
@@ -126,7 +127,13 @@ const GoalItem = ({ goal, status }: GoalItemProps) => {
         <section>
           {status === "in-progress" && (
             <ProgressBar
-              goalStatus={[_startDate, _endDate, _remainDay, _hoursLeft]}
+              goalStatus={[
+                _today,
+                _startDate,
+                _endDate,
+                _remainDay,
+                _hoursLeft,
+              ]}
             />
           )}
         </section>

@@ -1,10 +1,10 @@
 import styles from "./progressBar.module.css";
 
 type ProgressBarProps = {
-  goalStatus: [string, string, number, number | undefined];
+  goalStatus: [Date, string, string, number, number | undefined];
 };
 
-const DEFAULT_COLOR = "#000000";
+const DEFAULT_COLOR = "rgba(255,255,255,0.33)";
 
 const HOURS_COLOR_RANGES = [
   { max: 6, color: "#D51011" },
@@ -22,7 +22,7 @@ const DAY_COLOR_RANGES = [
 ];
 
 const ProgressBar = ({ goalStatus }: ProgressBarProps) => {
-  const [_startDate, _endDate, _remainDay, _hoursLeft] = goalStatus;
+  const [_today, _startDate, _endDate, _remainDay, _hoursLeft] = goalStatus;
 
   const startDate = new Date(_startDate);
   const endDate = new Date(_endDate);
@@ -37,10 +37,13 @@ const ProgressBar = ({ goalStatus }: ProgressBarProps) => {
       ((_hoursLeft / 24) * 100).toFixed(2),
     );
     progressBarColor = (
-      HOURS_COLOR_RANGES.find(
-        (range) => remainHoursPercentage <= range.max,
-      ) || { color: DEFAULT_COLOR }
+      [...HOURS_COLOR_RANGES]
+        .reverse()
+        .find((range) => remainHoursPercentage >= range.max) || {
+        color: DEFAULT_COLOR,
+      }
     ).color;
+    console.log(progressBarColor);
     remainPercentage = remainHoursPercentage;
   } else {
     const remainDayPercentage = parseFloat(
@@ -60,9 +63,13 @@ const ProgressBar = ({ goalStatus }: ProgressBarProps) => {
       style={{
         background: `linear-gradient(to right, ${progressBarColor} ${remainPercentage}%, transparent ${remainPercentage}%)`,
       }}
-      data-label={`${
-        _remainDay > 0 ? `${_remainDay} days left` : `${_hoursLeft} hours left`
-      }`}
+      data-label={`      ${
+        new Date(_startDate) > _today
+          ? `Goal not started yet`
+          : _remainDay > 0
+            ? `${_remainDay} days left`
+            : `${_hoursLeft} hours left`
+      }      `}
     ></div>
   );
 };
