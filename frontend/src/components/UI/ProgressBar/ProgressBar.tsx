@@ -36,6 +36,7 @@ const ProgressBar = ({ goalStatus }: ProgressBarProps) => {
     const remainHoursPercentage = parseFloat(
       ((_hoursLeft / 24) * 100).toFixed(2),
     );
+
     progressBarColor = (
       [...HOURS_COLOR_RANGES]
         .reverse()
@@ -43,17 +44,19 @@ const ProgressBar = ({ goalStatus }: ProgressBarProps) => {
         color: DEFAULT_COLOR,
       }
     ).color;
-    console.log(progressBarColor);
+
     remainPercentage = remainHoursPercentage;
   } else {
     const remainDayPercentage = parseFloat(
       ((_remainDay / totalDays) * 100).toFixed(2),
     );
+
     progressBarColor = (
       DAY_COLOR_RANGES.find((range) => remainDayPercentage <= range.max) || {
         color: DEFAULT_COLOR,
       }
     ).color;
+
     remainPercentage = remainDayPercentage;
   }
 
@@ -63,13 +66,13 @@ const ProgressBar = ({ goalStatus }: ProgressBarProps) => {
       style={{
         background: `linear-gradient(to right, ${progressBarColor} ${remainPercentage}%, transparent ${remainPercentage}%)`,
       }}
-      data-label={`      ${
+      data-label={`${
         new Date(_startDate) > _today
-          ? `Goal not started yet`
+          ? `The goal has not started yet. `
           : _remainDay > 0
             ? `${_remainDay} days left`
             : `${_hoursLeft} hours left`
-      }      `}
+      }`}
     ></div>
   );
 };
