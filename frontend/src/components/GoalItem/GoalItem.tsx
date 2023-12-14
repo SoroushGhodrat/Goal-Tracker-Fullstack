@@ -100,7 +100,24 @@ const GoalItem = ({ goal, status }: GoalItemProps) => {
           </Tooltip>
         </div>
       </div>
-      <hr />
+
+      {
+        <section>
+          {status === "in-progress" ? (
+            <ProgressBar
+              goalStatus={[
+                _today,
+                _startDate,
+                _endDate,
+                _remainDay,
+                _hoursLeft,
+              ]}
+            />
+          ) : (
+            <hr />
+          )}
+        </section>
+      }
 
       {/* Goal description part */}
       <div
@@ -122,22 +139,6 @@ const GoalItem = ({ goal, status }: GoalItemProps) => {
           </>
         )}
       </section>
-
-      {
-        <section>
-          {status === "in-progress" && (
-            <ProgressBar
-              goalStatus={[
-                _today,
-                _startDate,
-                _endDate,
-                _remainDay,
-                _hoursLeft,
-              ]}
-            />
-          )}
-        </section>
-      }
     </div>
   );
 };
