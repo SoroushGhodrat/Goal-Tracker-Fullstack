@@ -33,7 +33,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "tidy": "prettier --write ."
+    "tidy": "prettier --write . && oxlint"
   },
   "eslintConfig": {
     "extends": [
@@ -52,5 +52,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "oxlint": "^0.0.20"
   }
 }
