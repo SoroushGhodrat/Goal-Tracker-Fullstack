@@ -42,6 +42,7 @@ const GoalForm: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
 
   const goal = useSelector((state: RootState) => state.goals.goals);
+  const { user } = useSelector((state: any) => state.auth);
 
   const [VIEW_MODE, setVIEW_MODE] = useState<"create" | "edit">("create");
 
@@ -88,6 +89,12 @@ const GoalForm: React.FC = () => {
       }
     }
   }, []);
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/login");
+    }
+  }, [user]);
 
   let startDateFooter = <p>Please select a start date.</p>;
   if (selectedDates.startDate) {
@@ -181,7 +188,7 @@ const GoalForm: React.FC = () => {
       </section>
       <form onSubmit={onSubmit}>
         <div className={styles.form_group}>
-          <label htmlFor="text">Description</label>
+          <label htmlFor="description">Description</label>
           <TextEditor value={text} onChange={handleTextChange} />
         </div>
         {errors.textError && <Error error={errors.textError} />}

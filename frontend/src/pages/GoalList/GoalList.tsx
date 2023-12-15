@@ -9,7 +9,6 @@ import { AppDispatch } from "../../app/store";
 import goalImage from "../../assets/goal.png";
 import styles from "./goalList.module.css";
 import tabstyles from "./tabs.module.css";
-import { dayCalculator } from "../../utils/helper";
 import PieChart from "../../components/UI/PieChart/PieChart";
 
 const GoalList = () => {
