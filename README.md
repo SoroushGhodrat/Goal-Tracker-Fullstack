@@ -22,7 +22,7 @@ Execute `npm install` to install all necessary dependencies for both the backend
 
 ### Running the Frontend
 
-Initiate the frontend by executing `npm start` in the first terminal.
+Initiate the frontend by executing `npm run dev` in the first terminal.
 
 ### Running the Backend
 
