@@ -6,7 +6,8 @@ import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import styles from "./navbar.module.css";
 import Button from "../UI/Button/Button";
 import DropdownButton from "../DropdownButton/DropdownButton";
-import Logo from "../../assets/Logo.png";
+import logo from "../../assets/logo.png";
+import goal_logo from '../../assets/goal-logo.png'
 import { useRef } from "react";
 
 const Navbar = () => {
@@ -38,7 +39,7 @@ const Navbar = () => {
     <header>
       <nav>
         <div className={styles.logo}>
-          <img src={Logo} alt="logo" />
+          <img src={logo} alt="logo" />
           <p>GOAL TRACKER</p>
         </div>
 
