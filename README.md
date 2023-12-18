@@ -39,6 +39,27 @@ Server Status:
 
 Should you encounter any errors, you can easily restart the server. Simply type `rs` into the terminal and hit the `Enter` key. This command will trigger a server reboot, potentially resolving any temporary issues.
 
+### Setting Up MongoDB for Local Backend Development
+
+Follow these steps to set up your own MongoDB database for running the backend on your local machine:
+
+1. Create a MongoDB account if you don't already have one. You can sign up for a free account.
+
+2. Log in to your MongoDB account and create a new database.
+
+3. Set up the database username, password, and database name.
+
+4. In the root of the backend folder, create a `.env` file to store your private database information. Use the following format:
+
+```env
+NODE_ENV=development
+PORT=5000
+DB_USER=<your-database-username>
+DB_PASSWORD=<your-database-password>
+DB_NAME=<your-database-name>
+JWT_SECRET=<your-jwt-secret>  # e.g., saMplE123
+```
+
 ### Token-Based Authentication
 
 ---
