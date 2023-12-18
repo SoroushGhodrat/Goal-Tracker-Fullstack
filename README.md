@@ -61,7 +61,7 @@ PORT=5000
 DB_USER=<your-database-username>
 DB_PASSWORD=<your-database-password>
 DB_NAME=<your-database-name>
-JWT_SECRET=<your-jwt-secret>  # e.g., saMplE123
+JWT_SECRET=<your-jwt-secret>  # e.g., secret123
 ```
 
 ### Installation
