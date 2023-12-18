@@ -157,7 +157,6 @@ const GoalForm: React.FC = () => {
   };
 
   const handleUpdateGoal = () => {
-    console.log(selectedDates);
     if (!validateForm()) {
       return;
     } else {

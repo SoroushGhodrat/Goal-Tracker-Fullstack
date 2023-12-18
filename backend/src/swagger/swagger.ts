@@ -6,7 +6,7 @@ function swaggerDocs(app: Express) {
   app.use(
     "/api-docs",
     swaggerUi.serve,
-    swaggerUi.setup(swaggerDoc, { explorer: true })
+    swaggerUi.setup(swaggerDoc, { explorer: true }),
   );
 }
 

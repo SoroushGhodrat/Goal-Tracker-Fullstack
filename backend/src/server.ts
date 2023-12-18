@@ -25,7 +25,7 @@ app.use((req, res, next) => {
   // Define the allowed headers
   res.setHeader(
     "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization",
   );
 
   next();
@@ -43,7 +43,7 @@ mongoose
   .then(() => {
     app.listen(`${process.env.PORT}`, () => {
       console.log(
-        `\nServer Status: \n🔌 Connected To MongoDB\n🎧 Server is running on http://localhost:${process.env.PORT}\n📄 API documents: http://localhost:5000/api-docs/\n`
+        `\nServer Status: \n🔌 Connected To MongoDB\n🎧 Server is running on http://localhost:${process.env.PORT}\n📄 API documents: http://localhost:5000/api-docs/\n`,
       );
     });
   })
