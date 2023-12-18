@@ -83,12 +83,6 @@ const Login = () => {
         <p>Login and start setting goals</p>
       </section>
 
-      <section style={{ paddingLeft: "20px", textAlign: "center" }}>
-        <p>Email: guest@email.com</p>
-        <p>Password: password</p>
-        <br />
-      </section>
-
       <section className={styles.form}>
         <div className={styles.login_image}>
           <img src={loginImage} alt="Goal" />
