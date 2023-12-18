@@ -1,8 +1,9 @@
-## Table of Contents
+## 📚 Table of Contents
 
 
 
 1. [ Project Setup and Execution](#project-setup-and-execution)
+   - [ Prerequisites](#prerequisites)
    - [ Installation](#installation)
    - [ Running the Frontend](#running-the-frontend)
    - [ Running the Backend](#running-the-backend)
@@ -15,20 +16,40 @@
 
 ---
 ## Project Setup and Execution
----
 
+
+### Prerequisites
+
+Before you begin, ensure you have Node.js installed on your local machine. If not, you can download it from the official [Node.js website](https://nodejs.org/).
+
+To verify if Node.js is already installed, run the following command in your terminal:
+
+```bash
+node -v
+```
 
 ### Installation
-
-Execute `npm install` to install all necessary dependencies for both the backend and frontend of the project.
+Execute
+```bash
+npm install
+```
+to install all necessary dependencies for both the backend and frontend of the project.
 
 ### Running the Frontend
 
-Initiate the frontend by executing `npm run dev` in the first terminal.
+Initiate the frontend by executing
+```bash
+npm run dev
+```
+in the first terminal.
 
 ### Running the Backend (server)
 
-Start the backend server by executing `npm run server` in a separate terminal. Upon successful startup, the following message will be displayed in the terminal:
+Start the backend server by executing
+```bash
+npm run server
+```
+in a separate terminal. Upon successful startup, the following message will be displayed in the terminal:
 
 ```sh
 Server Status:
