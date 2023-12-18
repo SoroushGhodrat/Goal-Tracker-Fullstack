@@ -1,7 +1,5 @@
 ## 📚 Table of Contents
 
-
-
 1. [Project Setup and Execution](#project-setup-and-execution)
    - [Prerequisites](#prerequisites)
    - [Cloning the Project](#cloning-the-project)
@@ -14,9 +12,12 @@
 2. [Security](#essential-libraries-for-security)
 3. [Technologies Used](#technologies-used)
 
+## About the Goal Tracker App
+
+The Goal Tracker app assists users in setting and tracking their progress towards personal goals.
+This application is built using a robust tech stack that includes Node.js, Express.js, MongoDB, JavaScript, React.js, TypeScript, and CSS Modules.
 
 ## Project Setup and Execution
-
 
 ### Prerequisites
 
@@ -43,6 +44,7 @@ git clone https://github.com/SoroushGhodrat/Goal-Tracker-Fullstack.git
 ```
 
 ### Setting Up MongoDB for Local Backend Development
+
 ---
 
 Follow these steps to set up your own MongoDB database for running the backend on your local machine:
@@ -65,26 +67,29 @@ JWT_SECRET=<your-jwt-secret>  # e.g., secret123
 ```
 
 ### Installation
-This project consists of a frontend and a backend, each with its own set of dependencies. To install these dependencies, you need to navigate to each directory and run the installation command: 
+
+This project consists of a frontend and a backend, each with its own set of dependencies. To install these dependencies, you need to navigate to each directory and run the installation command:
+
 ```bash
 npm install
 ```
 
-
 ### Running the Frontend
 
 Initiate the frontend in the first terminal by executing:
+
 ```bash
 npm run dev
 ```
 
-
 ### Running the Backend (server)
 
 Start the backend server in a separate terminal by executing:
+
 ```bash
 npm run server
 ```
+
 Upon successful startup, the following message will be displayed in the terminal:
 
 ```sh
@@ -97,8 +102,6 @@ Server Status:
 ### Restart Server
 
 Should you encounter any errors, you can easily restart the server. Simply type `rs` into the terminal and hit the `Enter` key. This command will trigger a server reboot, potentially resolving any temporary issues.
-
-
 
 ### Token-Based Authentication
 
