@@ -6,14 +6,16 @@
    - [ Installation](#installation)
    - [ Running the Frontend](#running-the-frontend)
    - [ Running the Backend](#running-the-backend)
-   - [ Restart Server](#restart-server)
+   - [ Running the Backend](#running-the-backend)
+   - [ Setting Up MongoDB](#setting-up-mongodb-for-local-backend-development)
    - [ Token-Based Authentication](#token-based-authentication)
    - [ API Documentation using Swagger](#api-documentation-using-swagger)
 2. [ Security](#essential-libraries-for-security)
 3. [ Technologies Used](#technologies-used)
 
+---
 ## Project Setup and Execution
-
+---
 
 
 ### Installation
@@ -24,7 +26,7 @@ Execute `npm install` to install all necessary dependencies for both the backend
 
 Initiate the frontend by executing `npm run dev` in the first terminal.
 
-### Running the Backend
+### Running the Backend (server)
 
 Start the backend server by executing `npm run server` in a separate terminal. Upon successful startup, the following message will be displayed in the terminal:
 
@@ -40,6 +42,7 @@ Server Status:
 Should you encounter any errors, you can easily restart the server. Simply type `rs` into the terminal and hit the `Enter` key. This command will trigger a server reboot, potentially resolving any temporary issues.
 
 ### Setting Up MongoDB for Local Backend Development
+---
 
 Follow these steps to set up your own MongoDB database for running the backend on your local machine:
 
