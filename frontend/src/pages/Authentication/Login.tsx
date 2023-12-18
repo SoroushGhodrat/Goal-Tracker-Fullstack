@@ -135,6 +135,15 @@ const Login = () => {
           </div>
         </form>
       </section>
+
+      <section className={styles.login_info}>
+        <p>You can make your own account or use the predefined to test!</p>
+        <br />
+        <p>
+          Email: guest@email.com <br />
+          Password: password
+        </p>
+      </section>
     </main>
   );
 };

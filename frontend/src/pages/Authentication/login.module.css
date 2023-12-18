@@ -90,6 +90,15 @@
   cursor: pointer;
 }
 
+.login_info {
+  background-color: var(--pickled-bluewood-100);
+  border: 1px solid var(--pickled-bluewood-300);
+  border-radius: 5px;
+  margin: 0 auto;
+  padding: 5px 1px;
+  text-align: center;
+}
+
 @media (max-width: 870px) {
   .form {
     display: flex;
@@ -114,5 +123,9 @@
 
   .form .signup_image {
     display: none;
+  }
+
+  .login_info {
+    margin-top: 20px;
   }
 }
