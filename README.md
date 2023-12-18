@@ -2,19 +2,19 @@
 
 
 
-1. [ Project Setup and Execution](#project-setup-and-execution)
-   - [ Prerequisites](#prerequisites)
-   - [ Installation](#installation)
-   - [ Running the Frontend](#running-the-frontend)
-   - [ Running the Backend](#running-the-backend)
-   - [ Running the Backend](#running-the-backend)
-   - [ Setting Up MongoDB](#setting-up-mongodb-for-local-backend-development)
-   - [ Token-Based Authentication](#token-based-authentication)
-   - [ API Documentation using Swagger](#api-documentation-using-swagger)
-2. [ Security](#essential-libraries-for-security)
-3. [ Technologies Used](#technologies-used)
+1. [Project Setup and Execution](#project-setup-and-execution)
+   - [Prerequisites](#prerequisites)
+   - [Cloning the Project](#cloning-the-project)
+   - [Setting Up MongoDB](#setting-up-mongodb-for-local-backend-development)
+   - [Installation](#installation)
+   - [Running the Frontend](#running-the-frontend)
+   - [Running the Backend (Server)](#running-the-backend-server)
+   - [Token-Based Authentication](#token-based-authentication)
+   - [API Documentation using Swagger](#api-documentation-using-swagger)
+2. [Security](#essential-libraries-for-security)
+3. [Technologies Used](#technologies-used)
 
----
+
 ## Project Setup and Execution
 
 
@@ -28,39 +28,19 @@ To verify if Node.js is already installed, run the following command in your ter
 node -v
 ```
 
-### Installation
-Execute
+### Cloning the Project
+
+To clone this project to your local machine, follow these steps:
+
+1. Open your terminal.
+
+2. Navigate to the directory where you want to clone the project.
+
+3. Run the following command:
+
 ```bash
-npm install
+git clone https://github.com/SoroushGhodrat/Goal-Tracker-Fullstack.git
 ```
-to install all necessary dependencies for both the backend and frontend of the project.
-
-### Running the Frontend
-
-Initiate the frontend by executing
-```bash
-npm run dev
-```
-in the first terminal.
-
-### Running the Backend (server)
-
-Start the backend server by executing
-```bash
-npm run server
-```
-in a separate terminal. Upon successful startup, the following message will be displayed in the terminal:
-
-```sh
-Server Status:
-🔌 Connected To MongoDB
-🎧 Server is running on http://localhost:5000
-📄 API documents: http://localhost:5000/api-docs/
-```
-
-### Restart Server
-
-Should you encounter any errors, you can easily restart the server. Simply type `rs` into the terminal and hit the `Enter` key. This command will trigger a server reboot, potentially resolving any temporary issues.
 
 ### Setting Up MongoDB for Local Backend Development
 ---
@@ -83,6 +63,42 @@ DB_PASSWORD=<your-database-password>
 DB_NAME=<your-database-name>
 JWT_SECRET=<your-jwt-secret>  # e.g., saMplE123
 ```
+
+### Installation
+This project consists of a frontend and a backend, each with its own set of dependencies. To install these dependencies, you need to navigate to each directory and run the installation command: 
+```bash
+npm install
+```
+
+
+### Running the Frontend
+
+Initiate the frontend in the first terminal by executing:
+```bash
+npm run dev
+```
+
+
+### Running the Backend (server)
+
+Start the backend server in a separate terminal by executing:
+```bash
+npm run server
+```
+Upon successful startup, the following message will be displayed in the terminal:
+
+```sh
+Server Status:
+🔌 Connected To MongoDB
+🎧 Server is running on http://localhost:5000
+📄 API documents: http://localhost:5000/api-docs/
+```
+
+### Restart Server
+
+Should you encounter any errors, you can easily restart the server. Simply type `rs` into the terminal and hit the `Enter` key. This command will trigger a server reboot, potentially resolving any temporary issues.
+
+
 
 ### Token-Based Authentication
 
