@@ -7,7 +7,6 @@ import styles from "./navbar.module.css";
 import Button from "../UI/Button/Button";
 import DropdownButton from "../DropdownButton/DropdownButton";
 import logo from "../../assets/logo.png";
-import goal_logo from '../../assets/goal-logo.png'
 import { useRef } from "react";
 
 const Navbar = () => {
