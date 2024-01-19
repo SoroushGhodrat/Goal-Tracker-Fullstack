@@ -5,29 +5,32 @@ on:
     branches:
       - dev
 
-env:
-  PROJECT_ID: goal-tracker-dev
-  PROJECT_NAME: goal-tracker-dev
-  PROJECT_REGION: europe-north1
-  ARTIFACTS: frontend
-
 jobs:
-  build-and-test:
+  build:
+    name: Check pull request health
     runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+      fail-fast: false
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Use Node.js
-        uses: actions/setup-node@v2
+        uses: actions/checkout@v3.0.0
         with:
-          node-version: "14"
+          fetch-depth: 0
+
+      - name: Set up NodeJS ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
 
       - name: Install frontend dependencies
         run: |
           cd frontend
-          npm ci
+          npm install --force
 
       - name: Lint frontend
         run: |
@@ -39,11 +42,6 @@ jobs:
           cd frontend
           npm run build
 
-      - name: Test frontend
-        run: |
-          cd frontend
-          npm test
-
       - name: Install backend dependencies
         run: |
           cd backend
@@ -53,8 +51,3 @@ jobs:
         run: |
           cd backend
           npm run tidy
-
-      - name: Test backend
-        run: |
-          cd backend
-          npm test

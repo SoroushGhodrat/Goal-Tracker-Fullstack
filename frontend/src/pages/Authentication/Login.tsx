@@ -59,7 +59,7 @@ const Login = () => {
     e.preventDefault();
 
     const userData: any = {
-      email: email.trim(),
+      email: email,
       password: password.trim(),
     };
 
