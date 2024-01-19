@@ -1,13 +1,14 @@
 import { NextFunction, Request, Response } from "express";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import User from "../models/user.model";
+import { IUser } from "../declarations/user.t";
 
 interface CustomJwtPayload {
   id: string;
 }
 
 interface CustomRequest extends Request {
-  user?: any;
+  user?: IUser;
 }
 
 const protect = async (
@@ -32,7 +33,14 @@ const protect = async (
       ) as CustomJwtPayload;
 
       // get user data from token
-      req.user = await User.findById(decoded.id).select("-password");
+      const user = await User.findById(decoded.id).select("-password");
+
+      if (!user) {
+        res.status(404);
+        throw new Error("User not found");
+      }
+
+      req.user = user as IUser;
 
       next();
     } catch (error) {

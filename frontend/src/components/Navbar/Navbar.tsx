@@ -6,7 +6,7 @@ import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import styles from "./navbar.module.css";
 import Button from "../UI/Button/Button";
 import DropdownButton from "../DropdownButton/DropdownButton";
-import logo from '../../assets/Logo.png'
+import logo from "../../assets/Logo.png";
 import { useRef } from "react";
 
 const Navbar = () => {
