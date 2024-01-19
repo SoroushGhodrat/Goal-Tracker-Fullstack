@@ -24,18 +24,11 @@ type InputDate = {
 const GoalItem = ({ goal, status }: GoalItemProps) => {
   const dispatch: AppDispatch = useDispatch();
 
-  const { createdAt, _id, text, selectedDates } = goal;
+  const { createdAt, text, selectedDates } = goal;
   const { startDate, endDate } = selectedDates as InputDate;
 
-  const {
-    _today,
-    _startDate,
-    _endDate,
-    _remainDay,
-    _isGoalExpired,
-    _isGoalFinishToday,
-    _hoursLeft,
-  } = dayCalculator(startDate, endDate);
+  const { _today, _startDate, _endDate, _remainDay, _hoursLeft } =
+    dayCalculator(startDate, endDate);
 
   const navigate = useNavigate();
 

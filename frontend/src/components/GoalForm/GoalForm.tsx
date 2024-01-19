@@ -14,7 +14,7 @@ import { toast } from "react-toastify";
 import Button from "../UI/Button/Button";
 import { useNavigate } from "react-router-dom";
 
-interface Error {
+interface IError {
   textError: string | undefined;
   startDateError: string | undefined;
   endDateError: string | undefined;
@@ -30,7 +30,7 @@ const initialCalendarState: SelectedDates = {
   startDate: undefined,
   endDate: undefined,
 };
-const initialErrorsState: Error = {
+const initialErrorsState: IError = {
   textError: undefined,
   startDateError: undefined,
   endDateError: undefined,
@@ -88,13 +88,13 @@ const GoalForm: React.FC = () => {
         });
       }
     }
-  }, []);
+  }, [goal]);
 
   useEffect(() => {
     if (!user) {
       navigate("/login");
     }
-  }, [user]);
+  }, [user, navigate]);
 
   let startDateFooter = <p>Please select a start date.</p>;
   if (selectedDates.startDate) {

@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import { useState, useCallback } from "react";
 
 interface Error {
   textError: string | undefined;
@@ -12,10 +12,7 @@ interface SelectedDates {
   startDate: InputDate;
   endDate: InputDate;
 }
-const initialCalendarState: SelectedDates = {
-  startDate: undefined,
-  endDate: undefined,
-};
+
 const initialErrorsState: Error = {
   textError: undefined,
   startDateError: undefined,
