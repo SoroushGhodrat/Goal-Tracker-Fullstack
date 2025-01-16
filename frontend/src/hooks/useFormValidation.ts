@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback } from 'react';
 
 interface Error {
   textError: string | undefined;
@@ -26,13 +26,13 @@ const useFormValidation = (text: string, selectedDates: SelectedDates) => {
     if (text.length === 0) {
       setErrors((prevErrors) => ({
         ...prevErrors,
-        textError: "Description is required.",
+        textError: 'Description is required.',
         isErrored: true,
       }));
       return false;
     }
 
-    setErrors((prevErrors) => ({ ...prevErrors, textError: "" }));
+    setErrors((prevErrors) => ({ ...prevErrors, textError: '' }));
     return true;
   }, [text]);
 
@@ -40,7 +40,7 @@ const useFormValidation = (text: string, selectedDates: SelectedDates) => {
     if (!selectedDates?.startDate) {
       setErrors((prevErrors) => ({
         ...prevErrors,
-        startDateError: "Start date is required.",
+        startDateError: 'Start date is required.',
         isErrored: true,
       }));
       return false;
@@ -54,7 +54,7 @@ const useFormValidation = (text: string, selectedDates: SelectedDates) => {
     if (!selectedDates?.endDate) {
       setErrors((prevErrors) => ({
         ...prevErrors,
-        endDateError: "End date is required.",
+        endDateError: 'End date is required.',
         isErrored: true,
       }));
       return false;
@@ -67,7 +67,7 @@ const useFormValidation = (text: string, selectedDates: SelectedDates) => {
     ) {
       setErrors((prevErrors) => ({
         ...prevErrors,
-        endDateError: "End date cannot be before start date.",
+        endDateError: 'End date cannot be before start date.',
         isErrored: true,
       }));
       return false;

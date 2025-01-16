@@ -1,4 +1,4 @@
-import styles from "./error.module.css";
+import styles from './error.module.css';
 
 type ErrorProps = {
   error: string;

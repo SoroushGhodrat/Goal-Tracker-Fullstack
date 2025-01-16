@@ -1,24 +1,24 @@
-import styles from "./progressBar.module.css";
+import styles from './progressBar.module.css';
 
 type ProgressBarProps = {
   goalStatus: [Date, string, string, number, number | undefined];
 };
 
-const DEFAULT_COLOR = "rgba(255,255,255,0.33)";
+const DEFAULT_COLOR = 'rgba(255,255,255,0.33)';
 
 const HOURS_COLOR_RANGES = [
-  { max: 6, color: "#D51011" },
-  { max: 12, color: "#E2A537" },
-  { max: 18, color: "#99CCFF" },
-  { max: 24, color: "#339933" },
+  { max: 6, color: '#D51011' },
+  { max: 12, color: '#E2A537' },
+  { max: 18, color: '#99CCFF' },
+  { max: 24, color: '#339933' },
 ];
 
 const DAY_COLOR_RANGES = [
-  { max: 20, color: "#D51011" },
-  { max: 40, color: "#E2A537" },
-  { max: 60, color: "#99CCFF" },
-  { max: 80, color: "#3399FF" },
-  { max: 100, color: "#339933" },
+  { max: 20, color: '#D51011' },
+  { max: 40, color: '#E2A537' },
+  { max: 60, color: '#99CCFF' },
+  { max: 80, color: '#3399FF' },
+  { max: 100, color: '#339933' },
 ];
 
 const ProgressBar = ({ goalStatus }: ProgressBarProps) => {

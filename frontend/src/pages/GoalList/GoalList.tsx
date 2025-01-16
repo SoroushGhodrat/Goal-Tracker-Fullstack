@@ -1,15 +1,15 @@
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import Spinner from "../../components/UI/Spiner/Spiner";
-import { getGoals, reset } from "../../features/goals/goalSlice";
-import GoalItem from "../../components/GoalItem/GoalItem";
-import { Goal } from "../../declarations/formData";
-import { AppDispatch } from "../../app/store";
-import goalImage from "../../assets/goal.png";
-import styles from "./goalList.module.css";
-import tabstyles from "./tabs.module.css";
-import PieChart from "../../components/UI/PieChart/PieChart";
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import Spinner from '../../components/UI/Spiner/Spiner';
+import { getGoals, reset } from '../../features/goals/goalSlice';
+import GoalItem from '../../components/GoalItem/GoalItem';
+import { Goal } from '../../declarations/formData';
+import { AppDispatch } from '../../app/store';
+import goalImage from '../../assets/goal.png';
+import styles from './goalList.module.css';
+import tabstyles from './tabs.module.css';
+import PieChart from '../../components/UI/PieChart/PieChart';
 
 const GoalList = () => {
   const navigate = useNavigate();
@@ -27,7 +27,7 @@ const GoalList = () => {
     }
 
     if (!user) {
-      navigate("/login");
+      navigate('/login');
     }
 
     dispatch(getGoals());
@@ -97,7 +97,7 @@ const GoalList = () => {
                     <GoalItem
                       key={goal._id}
                       goal={goal}
-                      status={"in-progress"}
+                      status={'in-progress'}
                     />
                   );
                 })
@@ -114,7 +114,7 @@ const GoalList = () => {
               {finishedGoals.length > 0 ? (
                 finishedGoals.map((goal: Goal) => {
                   return (
-                    <GoalItem key={goal._id} goal={goal} status={"finished"} />
+                    <GoalItem key={goal._id} goal={goal} status={'finished'} />
                   );
                 })
               ) : (

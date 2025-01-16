@@ -1,4 +1,4 @@
-import GoalForm from "../../components/GoalForm/GoalForm";
+import GoalForm from '../../components/GoalForm/GoalForm';
 
 const CreateNewGoal = () => {
   return <GoalForm />;

@@ -54,7 +54,7 @@ nav .nav_links li a {
 }
 
 nav .nav_links li a::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -160,7 +160,7 @@ nav .nav_links li a:hover::after {
 }
 
 .menubar ul li a::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0;
   left: 50%;

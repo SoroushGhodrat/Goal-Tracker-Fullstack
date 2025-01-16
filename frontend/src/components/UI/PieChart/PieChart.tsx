@@ -1,5 +1,5 @@
-import { Chart } from "react-google-charts";
-import React from "react";
+import { Chart } from 'react-google-charts';
+import React from 'react';
 
 interface PieChartProps {
   inProgressGoals: [];
@@ -11,15 +11,15 @@ const PieChart: React.FC<PieChartProps> = ({
   finishedGoals,
 }) => {
   const data = [
-    ["Task", "Goals"],
-    ["In Progress Goals", inProgressGoals.length],
-    ["Finished Goals", finishedGoals.length],
+    ['Task', 'Goals'],
+    ['In Progress Goals', inProgressGoals.length],
+    ['Finished Goals', finishedGoals.length],
   ];
 
   const options = {
     // title: "My goals status",
-    legend: { position: "bottom" },
-    backgroundColor: "#eaeef4",
+    legend: { position: 'bottom' },
+    backgroundColor: '#eaeef4',
     pieHole: 0.4,
   };
 
@@ -28,8 +28,8 @@ const PieChart: React.FC<PieChartProps> = ({
       chartType="PieChart"
       data={data}
       options={options}
-      width={"100%"}
-      height={"400px"}
+      width={'100%'}
+      height={'400px'}
     />
   );
 };

@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
-import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
-import styles from "./dropdownButton.module.css";
+import React, { useState, useEffect, useRef } from 'react';
+import { IoMdArrowDropdown, IoMdArrowDropup } from 'react-icons/io';
+import styles from './dropdownButton.module.css';
 
 interface ProfileButtonProps {
   children: React.ReactNode;
@@ -32,9 +32,9 @@ const DropdownButton: React.FC<ProfileButtonProps> = ({
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
 
@@ -42,7 +42,7 @@ const DropdownButton: React.FC<ProfileButtonProps> = ({
     <span
       ref={dropdownRef}
       className={`${styles.dropdown_container} ${
-        isDropdownVisible ? styles.show_dropdown : ""
+        isDropdownVisible ? styles.show_dropdown : ''
       }`}
     >
       <button className={styles.btn} onClick={toggleDropdown}>

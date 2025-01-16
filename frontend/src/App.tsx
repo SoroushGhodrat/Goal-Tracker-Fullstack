@@ -1,13 +1,13 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import NewGoalForm from "./pages/CreateNewGoal/CreateNewGoal";
-import Login from "./pages/Authentication/Login";
-import Register from "./pages/Authentication/Register";
-import Header from "./components/Navbar/Navbar";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import GoalList from "./pages/GoalList/GoalList";
-import Page404 from "./pages/404/Page404";
-import GoalForm from "./components/GoalForm/GoalForm";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import NewGoalForm from './pages/CreateNewGoal/CreateNewGoal';
+import Login from './pages/Authentication/Login';
+import Register from './pages/Authentication/Register';
+import Header from './components/Navbar/Navbar';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import GoalList from './pages/GoalList/GoalList';
+import Page404 from './pages/404/Page404';
+import GoalForm from './components/GoalForm/GoalForm';
 
 function App() {
   return (

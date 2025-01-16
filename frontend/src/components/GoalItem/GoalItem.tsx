@@ -1,19 +1,19 @@
-import { useDispatch } from "react-redux";
-import { deleteGoal } from "../../features/goals/goalSlice";
-import { Goal } from "../../declarations/formData";
-import { AppDispatch } from "../../app/store";
-import styles from "./goalItem.module.css";
-import { LuBadgeInfo, LuTrash2, LuPencilLine } from "react-icons/lu";
-import "react-quill/dist/quill.snow.css";
-import Tooltip from "../UI/Tooltip/Tooltip";
-import { dayCalculator } from "../../utils/helper";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import ProgressBar from "../UI/ProgressBar/ProgressBar";
+import { useDispatch } from 'react-redux';
+import { deleteGoal } from '../../features/goals/goalSlice';
+import { Goal } from '../../declarations/formData';
+import { AppDispatch } from '../../app/store';
+import styles from './goalItem.module.css';
+import { LuBadgeInfo, LuTrash2, LuPencilLine } from 'react-icons/lu';
+import 'react-quill/dist/quill.snow.css';
+import Tooltip from '../UI/Tooltip/Tooltip';
+import { dayCalculator } from '../../utils/helper';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import ProgressBar from '../UI/ProgressBar/ProgressBar';
 
 interface GoalItemProps {
   goal: Goal;
-  status: "in-progress" | "finished";
+  status: 'in-progress' | 'finished';
 }
 
 type InputDate = {
@@ -33,19 +33,19 @@ const GoalItem = ({ goal, status }: GoalItemProps) => {
   const navigate = useNavigate();
 
   const handleEditGoal = (goal_id: string | undefined) => {
-    navigate("/goalForm/");
-    sessionStorage.setItem("VIE_MODE", "edit");
-    sessionStorage.setItem("goal_id", goal_id || "");
+    navigate('/goalForm/');
+    sessionStorage.setItem('VIE_MODE', 'edit');
+    sessionStorage.setItem('goal_id', goal_id || '');
   };
 
   const handleDeleteGoal = (goal_id: string | undefined) => {
     if (!goal_id) {
-      toast.error("Cannot fing goal id");
+      toast.error('Cannot fing goal id');
       return;
     }
 
     dispatch(deleteGoal(goal_id));
-    toast.success("Goal deleted successfully");
+    toast.success('Goal deleted successfully');
   };
 
   return (
@@ -58,12 +58,12 @@ const GoalItem = ({ goal, status }: GoalItemProps) => {
             <p>
               Created at:&nbsp;
               {createdAt
-                ? new Date(createdAt).toLocaleDateString("en-US", {
-                    day: "numeric",
-                    month: "long",
-                    year: "numeric",
+                ? new Date(createdAt).toLocaleDateString('en-US', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric',
                   })
-                : ""}
+                : ''}
             </p>
           </div>
         </div>
@@ -96,7 +96,7 @@ const GoalItem = ({ goal, status }: GoalItemProps) => {
 
       {
         <section>
-          {status === "in-progress" ? (
+          {status === 'in-progress' ? (
             <ProgressBar
               goalStatus={[
                 _today,
@@ -114,13 +114,13 @@ const GoalItem = ({ goal, status }: GoalItemProps) => {
 
       {/* Goal description part */}
       <div
-        dangerouslySetInnerHTML={{ __html: text || "" }}
+        dangerouslySetInnerHTML={{ __html: text || '' }}
         className={styles.description}
       />
       {/* Goal date information */}
 
       <section className={styles.duration}>
-        {status === "in-progress" ? (
+        {status === 'in-progress' ? (
           <>
             <p>Start at: {_startDate}</p>
             <p>Due date: {_endDate}</p>

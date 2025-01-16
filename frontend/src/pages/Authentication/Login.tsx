@@ -1,23 +1,23 @@
-import { useState, useEffect } from "react";
-import { FormDataLogin } from "../../declarations/formData";
-import { FaSignInAlt } from "react-icons/fa";
-import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import { login, reset } from "../../features/auth/authSlice";
-import Spinner from "../../components/UI/Spiner/Spiner";
-import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
-import loginImage from "../../assets/login.png";
-import styles from "./login.module.css";
-import Button from "../../components/UI/Button/Button";
-import { RiEyeLine, RiEyeCloseLine } from "react-icons/ri";
+import { useState, useEffect } from 'react';
+import { FormDataLogin } from '../../declarations/formData';
+import { FaSignInAlt } from 'react-icons/fa';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { login, reset } from '../../features/auth/authSlice';
+import Spinner from '../../components/UI/Spiner/Spiner';
+import { AnyAction, ThunkDispatch } from '@reduxjs/toolkit';
+import loginImage from '../../assets/login.png';
+import styles from './login.module.css';
+import Button from '../../components/UI/Button/Button';
+import { RiEyeLine, RiEyeCloseLine } from 'react-icons/ri';
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const [formData, setFormData] = useState<FormDataLogin>({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
 
   const { email, password } = formData;
@@ -38,7 +38,7 @@ const Login = () => {
     }
 
     if (isSuccess || user) {
-      navigate("/goals-list");
+      navigate('/goals-list');
     }
 
     dispatch(reset());
@@ -105,7 +105,7 @@ const Login = () => {
             <label htmlFor="password">Password</label>
             <div className={styles.password_reveal}>
               <input
-                type={showPassword ? "text" : "password"}
+                type={showPassword ? 'text' : 'password'}
                 className="form-control"
                 autoComplete="current-password"
                 id="password"
