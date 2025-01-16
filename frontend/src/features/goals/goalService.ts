@@ -1,8 +1,8 @@
-import axios from "axios";
+import axios from 'axios';
 
 // set "proxy": "http://localhost:5000" in package.json
 // or we can use the full url endpoint: http://localhost:5000/api/goals/
-const API_URL = "/api/goals/";
+const API_URL = '/api/goals/';
 
 // create a new goal
 const createGoal = async (goalData: any, token: string) => {

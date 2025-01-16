@@ -4,8 +4,8 @@ export const hoursIn24Format = () => {
   const currentMinutes = today.getMinutes();
 
   const currentTime = `${
-    currentHours < 10 ? "0" + currentHours : currentHours
-  }:${currentMinutes < 10 ? "0" + currentMinutes : currentMinutes}`;
+    currentHours < 10 ? '0' + currentHours : currentHours
+  }:${currentMinutes < 10 ? '0' + currentMinutes : currentMinutes}`;
   return currentTime;
 };
 

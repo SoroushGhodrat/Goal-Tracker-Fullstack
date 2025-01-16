@@ -1,16 +1,16 @@
-import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import { FormDataRegister } from "../../declarations/formData";
-import { FaUser } from "react-icons/fa";
-import { register, reset } from "../../features/auth/authSlice";
-import Spinner from "../../components/UI/Spiner/Spiner";
-import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
-import styles from "./login.module.css";
-import signupImage from "../../assets/signup.png";
-import Button from "../../components/UI/Button/Button";
-import { RiEyeLine, RiEyeCloseLine } from "react-icons/ri";
+import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { FormDataRegister } from '../../declarations/formData';
+import { FaUser } from 'react-icons/fa';
+import { register, reset } from '../../features/auth/authSlice';
+import Spinner from '../../components/UI/Spiner/Spiner';
+import { AnyAction, ThunkDispatch } from '@reduxjs/toolkit';
+import styles from './login.module.css';
+import signupImage from '../../assets/signup.png';
+import Button from '../../components/UI/Button/Button';
+import { RiEyeLine, RiEyeCloseLine } from 'react-icons/ri';
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState<{
@@ -21,10 +21,10 @@ const Register = () => {
     confirmPassword: false,
   });
   const [formData, setFormData] = useState<FormDataRegister>({
-    name: "",
-    email: "",
-    password: "",
-    confirm_password: "",
+    name: '',
+    email: '',
+    password: '',
+    confirm_password: '',
   });
 
   const { name, email, password, confirm_password } = formData;
@@ -42,7 +42,7 @@ const Register = () => {
     }
 
     if (isSuccess || user || user !== null) {
-      navigate("/goalList");
+      navigate('/goalList');
     }
 
     dispatch(reset());
@@ -63,7 +63,7 @@ const Register = () => {
     e.preventDefault();
 
     if (password !== confirm_password) {
-      toast.error("Passwords do not match");
+      toast.error('Passwords do not match');
     } else {
       const userData = {
         name,
@@ -79,7 +79,7 @@ const Register = () => {
     return <Spinner />;
   }
 
-  const togglePasswordVisibility = (field: "password" | "confirmPassword") => {
+  const togglePasswordVisibility = (field: 'password' | 'confirmPassword') => {
     return (event: React.MouseEvent) => {
       event.preventDefault();
       setShowPassword((prevState) => ({
@@ -132,7 +132,7 @@ const Register = () => {
             <label htmlFor="password">Password</label>
             <div className={styles.password_reveal}>
               <input
-                type={showPassword.password ? "text" : "password"}
+                type={showPassword.password ? 'text' : 'password'}
                 className="form-control"
                 autoComplete="current-password"
                 id="password"
@@ -143,7 +143,7 @@ const Register = () => {
               />
               <span>
                 <i
-                  onClick={togglePasswordVisibility("password")}
+                  onClick={togglePasswordVisibility('password')}
                   className={styles.toggler}
                 >
                   {showPassword.password ? <RiEyeLine /> : <RiEyeCloseLine />}
@@ -156,7 +156,7 @@ const Register = () => {
             <label htmlFor="confirm_password">Confirm Password</label>
             <div className={styles.password_reveal}>
               <input
-                type={showPassword.confirmPassword ? "text" : "password"}
+                type={showPassword.confirmPassword ? 'text' : 'password'}
                 className="form-control"
                 autoComplete="new-password"
                 id="confirm_password"
@@ -168,7 +168,7 @@ const Register = () => {
 
               <span>
                 <i
-                  onClick={togglePasswordVisibility("confirmPassword")}
+                  onClick={togglePasswordVisibility('confirmPassword')}
                   className={styles.toggler}
                 >
                   {showPassword.confirmPassword ? (

@@ -1,13 +1,13 @@
-import { FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { logout, reset } from "../../features/auth/authSlice";
-import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
-import styles from "./navbar.module.css";
-import Button from "../UI/Button/Button";
-import DropdownButton from "../DropdownButton/DropdownButton";
-import logo from "../../assets/Logo.png";
-import { useRef } from "react";
+import { FaSignInAlt, FaSignOutAlt, FaUser } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout, reset } from '../../features/auth/authSlice';
+import { AnyAction, ThunkDispatch } from '@reduxjs/toolkit';
+import styles from './navbar.module.css';
+import Button from '../UI/Button/Button';
+import DropdownButton from '../DropdownButton/DropdownButton';
+import logo from '../../assets/Logo.png';
+import { useRef } from 'react';
 
 const Navbar = () => {
   const dispatch = useDispatch<ThunkDispatch<any, any, AnyAction>>();

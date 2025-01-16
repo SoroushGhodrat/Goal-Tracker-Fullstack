@@ -1,5 +1,5 @@
-import styles from "./page404.module.css";
-import Page404_img from "../../assets/page_not_found.png";
+import styles from './page404.module.css';
+import Page404_img from '../../assets/page_not_found.png';
 
 const Page404 = () => {
   return (

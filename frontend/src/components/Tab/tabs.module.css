@@ -35,8 +35,8 @@ select:focus {
   overflow: hidden;
 }
 
-.tabs_container [class^="tab"] label,
-.tabs_container [class*=" tab"] label {
+.tabs_container [class^='tab'] label,
+.tabs_container [class*=' tab'] label {
   color: black;
   cursor: pointer;
   display: block;
@@ -46,8 +46,8 @@ select:focus {
   padding: 2rem 0;
   text-align: center;
 }
-.tabs_container [class^="tab"] [type="radio"],
-.tabs_container [class*=" tab"] [type="radio"] {
+.tabs_container [class^='tab'] [type='radio'],
+.tabs_container [class*=' tab'] [type='radio'] {
   border-bottom: 1px solid rgba(239, 237, 239, 0.5);
   cursor: pointer;
   -webkit-appearance: none;
@@ -60,22 +60,22 @@ select:focus {
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-.tabs_container [class^="tab"] [type="radio"]:hover,
-.tabs_container [class^="tab"] [type="radio"]:focus,
-.tabs_container [class*=" tab"] [type="radio"]:hover,
-.tabs_container [class*=" tab"] [type="radio"]:focus {
+.tabs_container [class^='tab'] [type='radio']:hover,
+.tabs_container [class^='tab'] [type='radio']:focus,
+.tabs_container [class*=' tab'] [type='radio']:hover,
+.tabs_container [class*=' tab'] [type='radio']:focus {
   border-bottom: 1px solid #fd264f;
 }
-.tabs_container [class^="tab"] [type="radio"]:checked,
-.tabs_container [class*=" tab"] [type="radio"]:checked {
+.tabs_container [class^='tab'] [type='radio']:checked,
+.tabs_container [class*=' tab'] [type='radio']:checked {
   border-bottom: 2px solid #fd264f;
 }
-.tabs_container [class^="tab"] [type="radio"]:checked + div,
-.tabs_container [class*=" tab"] [type="radio"]:checked + div {
+.tabs_container [class^='tab'] [type='radio']:checked + div,
+.tabs_container [class*=' tab'] [type='radio']:checked + div {
   opacity: 1;
 }
-.tabs_container [class^="tab"] [type="radio"] + div,
-.tabs_container [class*=" tab"] [type="radio"] + div {
+.tabs_container [class^='tab'] [type='radio'] + div,
+.tabs_container [class*=' tab'] [type='radio'] + div {
   display: block;
   opacity: 0;
   padding: 2rem 0;
@@ -88,16 +88,16 @@ select:focus {
 .tabs_container .tab {
   width: 50%;
 }
-.tabs_container .tab [type="radio"] + div {
+.tabs_container .tab [type='radio'] + div {
   width: 200%;
   margin-left: 200%;
 }
-.tabs_container .tab [type="radio"]:checked + div {
+.tabs_container .tab [type='radio']:checked + div {
   margin-left: 0;
 }
-.tabs_container .tab:last-child [type="radio"] + div {
+.tabs_container .tab:last-child [type='radio'] + div {
   margin-left: 100%;
 }
-.tabs_container .tab:last-child [type="radio"]:checked + div {
+.tabs_container .tab:last-child [type='radio']:checked + div {
   margin-left: -100%;
 }

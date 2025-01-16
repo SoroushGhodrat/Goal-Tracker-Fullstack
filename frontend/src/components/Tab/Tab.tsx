@@ -1,5 +1,5 @@
-import styles from "./tabs.module.css";
-import React, { FC, ReactElement, ReactNode } from "react";
+import styles from './tabs.module.css';
+import React, { FC, ReactElement, ReactNode } from 'react';
 
 interface TabProps {
   firstTabTitle: string;

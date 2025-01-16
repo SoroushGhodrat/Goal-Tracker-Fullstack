@@ -1,12 +1,12 @@
-import React from "react";
-import styles from "./button.module.css";
+import React from 'react';
+import styles from './button.module.css';
 
 interface ButtonProps {
   children?: React.ReactNode;
   onClick?: () => void;
-  variant: "button-solid" | "button-outline" | "button-text";
-  size: "small" | "medium" | "large";
-  type: "button" | "submit" | "reset";
+  variant: 'button-solid' | 'button-outline' | 'button-text';
+  size: 'small' | 'medium' | 'large';
+  type: 'button' | 'submit' | 'reset';
   title: string;
   disabled?: boolean;
 }
@@ -16,7 +16,7 @@ const Button: React.FC<ButtonProps> = ({
   size,
   children,
   onClick,
-  type = "button",
+  type = 'button',
   title,
   disabled = false,
 }) => {

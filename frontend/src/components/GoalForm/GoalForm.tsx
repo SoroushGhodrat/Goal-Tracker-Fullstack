@@ -1,18 +1,18 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { createGoal, updateGoal } from "../../features/goals/goalSlice";
-import { AppDispatch, RootState } from "../../app/store";
-import { format } from "date-fns";
-import styles from "./goalForm.module.css";
-import TextEditor from "../TextEditor/TextEditor";
-import { DayPicker } from "react-day-picker";
-import "react-day-picker/dist/style.css";
-import { BsChevronDown, BsChevronUp } from "react-icons/bs";
-import useFormValidation from "../../hooks/useFormValidation";
-import Error from "../UI/Error/Error";
-import { toast } from "react-toastify";
-import Button from "../UI/Button/Button";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { createGoal, updateGoal } from '../../features/goals/goalSlice';
+import { AppDispatch, RootState } from '../../app/store';
+import { format } from 'date-fns';
+import styles from './goalForm.module.css';
+import TextEditor from '../TextEditor/TextEditor';
+import { DayPicker } from 'react-day-picker';
+import 'react-day-picker/dist/style.css';
+import { BsChevronDown, BsChevronUp } from 'react-icons/bs';
+import useFormValidation from '../../hooks/useFormValidation';
+import Error from '../UI/Error/Error';
+import { toast } from 'react-toastify';
+import Button from '../UI/Button/Button';
+import { useNavigate } from 'react-router-dom';
 
 interface IError {
   textError: string | undefined;
@@ -44,9 +44,9 @@ const GoalForm: React.FC = () => {
   const goal = useSelector((state: RootState) => state.goals.goals);
   const { user } = useSelector((state: any) => state.auth);
 
-  const [VIEW_MODE, setVIEW_MODE] = useState<"create" | "edit">("create");
+  const [VIEW_MODE, setVIEW_MODE] = useState<'create' | 'edit'>('create');
 
-  const [text, setText] = useState<string>("");
+  const [text, setText] = useState<string>('');
 
   const [selectedDates, setSelectedDates] =
     useState<SelectedDates>(initialCalendarState);
@@ -65,8 +65,8 @@ const GoalForm: React.FC = () => {
 
   // ===== get goal id from local storage and search for the editable goal
   useEffect(() => {
-    const VIEW_MODE = sessionStorage?.getItem("VIE_MODE");
-    const goal_id = sessionStorage?.getItem("goal_id");
+    const VIEW_MODE = sessionStorage?.getItem('VIE_MODE');
+    const goal_id = sessionStorage?.getItem('goal_id');
 
     const matchedGoal = goal.find((goal) => goal._id === goal_id);
 
@@ -74,13 +74,13 @@ const GoalForm: React.FC = () => {
       matchedGoal &&
       matchedGoal.text &&
       matchedGoal.selectedDates &&
-      VIEW_MODE === "edit"
+      VIEW_MODE === 'edit'
     ) {
       setVIEW_MODE(VIEW_MODE);
       setText(matchedGoal.text);
       if (
-        typeof matchedGoal.selectedDates.startDate === "string" &&
-        typeof matchedGoal.selectedDates.endDate === "string"
+        typeof matchedGoal.selectedDates.startDate === 'string' &&
+        typeof matchedGoal.selectedDates.endDate === 'string'
       ) {
         setSelectedDates({
           startDate: new Date(matchedGoal.selectedDates.startDate),
@@ -92,7 +92,7 @@ const GoalForm: React.FC = () => {
 
   useEffect(() => {
     if (!user) {
-      navigate("/login");
+      navigate('/login');
     }
   }, [user, navigate]);
 
@@ -100,7 +100,7 @@ const GoalForm: React.FC = () => {
   if (selectedDates.startDate) {
     startDateFooter = (
       <p className={styles.start_date}>
-        Start Date: <span>{format(selectedDates.startDate, "PP")}</span> .
+        Start Date: <span>{format(selectedDates.startDate, 'PP')}</span> .
       </p>
     );
   }
@@ -109,7 +109,7 @@ const GoalForm: React.FC = () => {
   if (selectedDates.endDate) {
     endDateFooter = (
       <p className={styles.end_date}>
-        End Date: <span> {format(selectedDates.endDate, "PP")}</span>.
+        End Date: <span> {format(selectedDates.endDate, 'PP')}</span>.
       </p>
     );
   }
@@ -137,49 +137,49 @@ const GoalForm: React.FC = () => {
       return;
     } else {
       dispatch(createGoal({ text, selectedDates }));
-      toast.success("Goal created successfully");
-      navigate("/goals-list");
+      toast.success('Goal created successfully');
+      navigate('/goals-list');
       handleResetForm();
     }
   };
 
   const handleResetForm = () => {
-    setText("");
+    setText('');
     setSelectedDates(initialCalendarState);
     setErrors(initialErrorsState);
   };
 
   const handleCancelEditGoal = () => {
-    navigate("/goals-list");
+    navigate('/goals-list');
     handleResetForm();
-    sessionStorage.removeItem("goal_id");
-    sessionStorage.removeItem("VIE_MODE");
+    sessionStorage.removeItem('goal_id');
+    sessionStorage.removeItem('VIE_MODE');
   };
 
   const handleUpdateGoal = () => {
     if (!validateForm()) {
       return;
     } else {
-      const goal_id = sessionStorage.getItem("goal_id");
+      const goal_id = sessionStorage.getItem('goal_id');
       if (goal_id === null) {
-        toast.error("Cannot find goal id!");
+        toast.error('Cannot find goal id!');
         return;
       }
       dispatch(
         updateGoal({ goalId: goal_id, goalData: { text, selectedDates } }),
       );
-      toast.success("Goal updated successfully!");
+      toast.success('Goal updated successfully!');
       handleResetForm();
-      sessionStorage.removeItem("goal_id");
-      sessionStorage.removeItem("VIE_MODE");
-      navigate("/goals-list");
+      sessionStorage.removeItem('goal_id');
+      sessionStorage.removeItem('VIE_MODE');
+      navigate('/goals-list');
     }
   };
 
   return (
     <section className={styles.form}>
       <section className={styles.heading}>
-        {VIEW_MODE === "edit" ? (
+        {VIEW_MODE === 'edit' ? (
           <p>Your Goal is ready to edit!</p>
         ) : (
           <p>Add your goal!</p>
@@ -231,7 +231,7 @@ const GoalForm: React.FC = () => {
             onClick={handleResetForm}
           />
 
-          {VIEW_MODE === "edit" ? (
+          {VIEW_MODE === 'edit' ? (
             <>
               <Button
                 title="Cancel"
